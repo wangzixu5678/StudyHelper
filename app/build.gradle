@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+def ext = rootProject.ext
+def config = rootProject.ext.android
+def support = rootProject.ext.support
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion '28.0.2'
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation support.constraintLayout
+    implementation support.supportV4
+    implementation support.supportAppcompatV7
+    implementation support.design
+    implementation support.recyclerview
+    implementation support.cardview
+
+    implementation ext.baseRecyclerViewAdapterHelper
+    implementation ext.butterknife
+    annotationProcessor ext.butterknifeCompiler
+    implementation ext.smartRefreshLayout
+    implementation ext.glide
+    implementation ext.banner
+    implementation ext.eventBus
+    implementation ext.gson
+    implementation ext.okhttp
+    implementation ext.okhttpLoggingInterceptor
+    implementation ext.okio
+    implementation ext.retrofit
+    implementation ext.retrofitRxjava
+    implementation ext.retrofitConverterGson
+    implementation ext.retrofitScalars
+    implementation ext.rxJava
+    implementation ext.rxAndroid
+    implementation ext.multidex
+    implementation ext.statusBar
+    implementation ext.agentWeb
+    implementation ext.uCrop
+    implementation ext.spinKit
+
+    implementation ext.stetho
+    implementation ext.stethoOkhttp
+
+    implementation ext.leakCanary
+
+    implementation ext.toast
+
+
+    implementation ext.umengCommon
+    implementation ext.umengAnalytics
+
+    implementation ext.logUtils
+    implementation ext.flexbox
+
+    /**
+     * 网络框架 EaseHttp
+     * MVP 框架 XMVP
+     */
+
+}
