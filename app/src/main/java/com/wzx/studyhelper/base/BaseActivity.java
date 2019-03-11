@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.githang.statusbar.StatusBarCompat;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -67,8 +69,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
         }
         //锁定竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //初始化监测内存泄漏
-
+        //初始化状态栏
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.app_theme_color));
         //初始化ButterKnife
         unbinder = ButterKnife.bind(this);
         //初始化上个界面传递过来的值
