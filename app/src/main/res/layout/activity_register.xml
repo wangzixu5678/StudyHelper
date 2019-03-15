@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wzx.studyhelper.ui.RegisterActivity">
+    <FrameLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/common_title" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="用户昵称"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_name"
+            android:maxLength="20"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入用户昵称"
+            style="@style/common_edit_single_style"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <LinearLayout
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="手机号"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入手机号"
+            style="@style/common_edit_single_style"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <LinearLayout
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="密码"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_password"
+            android:maxLength="20"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入用户密码"
+            style="@style/common_edit_single_style"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <LinearLayout
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="14dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="密码确认"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_password2"
+            android:maxLength="20"
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:hint="请再次输入您的密码"
+            style="@style/common_edit_single_style"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <Button
+        android:enabled="false"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/btn_gray_bg"
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:onClick="btnGo"
+        android:text="注册" />
+
+
+
+
+</LinearLayout>

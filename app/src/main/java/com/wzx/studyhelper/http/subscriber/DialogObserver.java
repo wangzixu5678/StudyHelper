@@ -37,7 +37,7 @@ public abstract class DialogObserver<T> extends BaseObserver<T> {
                 mLoadingPopWindown.dismiss();
             }
         }
-        ToastUtils.show(code  + msg);
+        ToastUtils.show(msg);
     }
 
 

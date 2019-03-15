@@ -3,6 +3,7 @@ package com.wzx.studyhelper.http.subscriber;
 
 
 import com.google.gson.stream.MalformedJsonException;
+import com.hjq.toast.ToastUtils;
 import com.wzx.studyhelper.base.BaseImpl;
 import com.wzx.studyhelper.http.exception.ApiException;
 import com.wzx.studyhelper.utils.StringUtil;
@@ -64,6 +65,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
             String message = e.getMessage();
             onBaseError(ApiException.Code_Default, StringUtil.judgeString(message));
         }
+
     }
 
     @Override

@@ -90,4 +90,12 @@ ext {
     //FlexboxLayout
     flexbox = "com.google.android:flexbox:0.3.0-alpha3"
 
+    //TabLayout
+    tablatout = 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    //动画效果库
+    animutils = 'com.github.hujiaweibujidao:wava:1.0.0'
+
+    particleview = 'me.wangyuwei:ParticleView:1.0.2'
+
 }

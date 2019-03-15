@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_gravity="center"
-    android:layout_height="wrap_content">
 
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/img_loading"
-        android:layout_width="84dp"
-        android:layout_height="84dp" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="143dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/tv_loading_hint"
-        android:textColor="#fff"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/img_loading"
-        android:text="加载中..."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.2"
+            android:background="@drawable/loading_bg" />
+
+        <ImageView
+            android:id="@+id/img_loading"
+            android:layout_width="133dp"
+            android:layout_height="33dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y5"
+            android:src="@drawable/loading" />
+
+        <TextView
+            android:id="@+id/tv_loading_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_loading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="加载中..."
+            android:textColor="#fff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</FrameLayout>

@@ -47,7 +47,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        SharedPreferencesUtil.init(this,"appname",MODE_PRIVATE);
+        SharedPreferencesUtil.init(this,"studyhelper",MODE_PRIVATE);
         ToastUtils.init(this);
 
     }

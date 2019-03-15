@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wzx.studyhelper">
 
-    <application
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <application
         android:name=".base.App"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -11,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.HomeActivity">
+        <activity
+            android:name=".ui.HomeActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.RegisterActivity">
+
+        </activity>
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

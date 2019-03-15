@@ -36,6 +36,7 @@ dependencies {
 
     implementation ext.baseRecyclerViewAdapterHelper
     implementation ext.butterknife
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor ext.butterknifeCompiler
     implementation ext.smartRefreshLayout
     implementation ext.glide
@@ -71,6 +72,11 @@ dependencies {
     implementation ext.logUtils
     implementation ext.flexbox
 
+    implementation ext.tablatout
+
+    implementation ext.animutils
+
+    implementation ext.particleview
     /**
      * 网络框架 EaseHttp
      * MVP 框架 XMVP

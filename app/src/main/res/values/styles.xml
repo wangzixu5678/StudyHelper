@@ -45,4 +45,16 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+    <style name="common_edit_single_style">
+        <item name="android:background">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textCursorDrawable">@drawable/common_edit_cursor</item>
+        <item name="android:gravity">start</item>
+    </style>
+    <style name="common_edit_nosingle_style">
+        <item name="android:background">@null</item>
+        <item name="android:textCursorDrawable">@drawable/common_edit_cursor</item>
+        <item name="android:gravity">start</item>
+    </style>
 </resources>

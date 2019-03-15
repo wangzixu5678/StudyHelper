@@ -3,6 +3,7 @@ package com.wzx.studyhelper.http;
 import android.content.Context;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.google.gson.JsonObject;
 import com.wzx.studyhelper.http.api.ApiResponse;
 import com.wzx.studyhelper.http.api.ApiService;
 import com.wzx.studyhelper.http.exception.ApiException;
@@ -61,9 +62,15 @@ public abstract class RetrofitManager {
 
     protected HashMap<String, Object> getHeaderMap() {
         HashMap<String, Object> headerMap = new HashMap<>();
-        headerMap.put("token", "123456");
         return headerMap;
     }
+
+    protected  JsonObject getParamsMap() {
+
+        return  new JsonObject();
+
+    }
+
 
     protected <T> void toSubscribe(Observable<ApiResponse<T>> observable, Observer<T> observer) {
         observable.subscribeOn(Schedulers.io())
@@ -88,7 +95,7 @@ public abstract class RetrofitManager {
             @Override
             public String apply(String t) throws Exception {
                 JSONObject responseStr = new JSONObject(t);
-                String message = responseStr.getString("message");
+                String message = responseStr.getString("msg");
                 int code = responseStr.getInt("code");
                 if (code != ConstantCode.SUCCESSCODE) {
                     throw new ApiException(code, message);
@@ -99,7 +106,12 @@ public abstract class RetrofitManager {
         }).unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(s);
+    }
 
-
+    protected <T> void toSubscribeStrWithoutFilter(Observable<String> o, Observer<String> s) {
+        o.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(s);
     }
 }

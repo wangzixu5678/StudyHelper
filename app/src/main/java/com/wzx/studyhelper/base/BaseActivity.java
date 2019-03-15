@@ -12,6 +12,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.githang.statusbar.StatusBarCompat;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -40,7 +42,7 @@ import io.reactivex.disposables.Disposable;
  * Created by hdxy on 2018/11/30.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseImpl{
+public abstract class BaseActivity extends AppCompatActivity implements BaseImpl {
 
 
     private Unbinder unbinder;
@@ -70,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
         //锁定竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //初始化状态栏
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.app_theme_color));
+        setStatusBar();
         //初始化ButterKnife
         unbinder = ButterKnife.bind(this);
         //初始化上个界面传递过来的值
@@ -81,6 +83,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
         initCircle();
     }
 
+    protected void setStatusBar() {
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.app_theme_color));
+    }
+
+    protected View getEmptyView(){
+       return LayoutInflater.from(this).inflate(R.layout.empty_view_layout, null);
+    }
+
+
+
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -90,7 +102,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
         initCommonUI();
         initCircle();
     }
-    protected void initCommonUI(){
+
+    protected void initCommonUI() {
         /**
          * 初始化一些常用控件 无需构建重复代码(前提只要你在xml布局文件中有 那么就会省略很多代码)
          * initTitle 初始化标题栏
@@ -104,12 +117,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
 
     protected void initRv() {
         mRecyclerView = findViewById(R.id.recyclerview);
-        if (mRecyclerView!=null){
+        if (mRecyclerView != null) {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(this,OrientationHelper.VERTICAL));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, OrientationHelper.VERTICAL));
         }
     }
-
 
 
     private void initTitle() {
@@ -121,30 +133,31 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
         mTvRight = ((TextView) findViewById(R.id.tv_right));
         mFlRightContent = ((FrameLayout) findViewById(R.id.fl_right_content));
     }
-    protected void setBackTitle(String title,Object rightRes){
-        if (mTvTitle!=null){
+
+    protected void setBackTitle(String title, Object rightRes) {
+        if (mTvTitle != null) {
             mTvTitle.setText(title);
         }
 
-        if (mImgLeft!=null){
+        if (mImgLeft != null) {
             mImgLeft.setVisibility(View.VISIBLE);
             mImgLeft.setImageResource(R.drawable.back);
         }
-        if (rightRes!=null){
-            if (rightRes instanceof String){
-                if (mTvRight!=null){
+        if (rightRes != null) {
+            if (rightRes instanceof String) {
+                if (mTvRight != null) {
                     mTvRight.setVisibility(View.VISIBLE);
                     mTvRight.setText(((String) rightRes));
                 }
-            }else if (rightRes instanceof Integer){
-                if (mImgRight!=null){
+            } else if (rightRes instanceof Integer) {
+                if (mImgRight != null) {
                     mImgRight.setVisibility(View.VISIBLE);
-                    mImgRight.setImageResource((Integer)rightRes);
+                    mImgRight.setImageResource((Integer) rightRes);
                 }
             }
         }
 
-        if (mFlLeftContent!=null){
+        if (mFlLeftContent != null) {
             mFlLeftContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -153,7 +166,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             });
         }
 
-        if (mFlRightContent!=null){
+        if (mFlRightContent != null) {
             mFlRightContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -162,40 +175,41 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             });
         }
     }
-    protected void setCustomTitle(Object leftRes,String title,Object rightRes){
-        if (mTvTitle!=null){
+
+    protected void setCustomTitle(Object leftRes, String title, Object rightRes) {
+        if (mTvTitle != null) {
             mTvTitle.setText(title);
         }
 
-        if (leftRes!=null){
-            if (leftRes instanceof String){
-                if (mTvLeft!=null){
+        if (leftRes != null) {
+            if (leftRes instanceof String) {
+                if (mTvLeft != null) {
                     mTvLeft.setVisibility(View.VISIBLE);
                     mTvLeft.setText(((String) leftRes));
                 }
-            }else if (leftRes instanceof Integer){
-                if (mImgLeft!=null){
+            } else if (leftRes instanceof Integer) {
+                if (mImgLeft != null) {
                     mImgLeft.setVisibility(View.VISIBLE);
-                    mImgLeft.setImageResource((Integer)leftRes);
+                    mImgLeft.setImageResource((Integer) leftRes);
                 }
             }
         }
 
-        if (rightRes!=null){
-            if (rightRes instanceof String){
-                if (mTvRight!=null){
+        if (rightRes != null) {
+            if (rightRes instanceof String) {
+                if (mTvRight != null) {
                     mTvRight.setVisibility(View.VISIBLE);
                     mTvRight.setText(((String) rightRes));
                 }
-            }else if (rightRes instanceof Integer){
-                if (mImgRight!=null){
+            } else if (rightRes instanceof Integer) {
+                if (mImgRight != null) {
                     mImgRight.setVisibility(View.VISIBLE);
-                    mImgRight.setImageResource((Integer)rightRes);
+                    mImgRight.setImageResource((Integer) rightRes);
                 }
             }
         }
 
-        if (mFlLeftContent!=null){
+        if (mFlLeftContent != null) {
             mFlLeftContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -204,7 +218,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             });
         }
 
-        if (mFlRightContent!=null){
+        if (mFlRightContent != null) {
             mFlRightContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -213,35 +227,40 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             });
         }
     }
-    protected void setLeftTitleColor(int color){
-        if (mTvLeft!=null) {
+
+    protected void setLeftTitleColor(int color) {
+        if (mTvLeft != null) {
             mTvLeft.setTextColor(color);
         }
     }
-    protected void setLeftRightColor(int color){
-        if (mTvRight!=null){
+
+    protected void setLeftRightColor(int color) {
+        if (mTvRight != null) {
             mTvRight.setTextColor(color);
         }
     }
-    protected void setLeftImgSize(int width,int height){
-        if (mImgLeft!=null){
+
+    protected void setLeftImgSize(int width, int height) {
+        if (mImgLeft != null) {
             ViewGroup.LayoutParams layoutParams = mImgLeft.getLayoutParams();
             layoutParams.width = width;
             layoutParams.height = height;
             mImgLeft.setLayoutParams(layoutParams);
         }
     }
-    protected void setRightImgSize(int width,int height){
-        if (mImgRight!=null){
+
+    protected void setRightImgSize(int width, int height) {
+        if (mImgRight != null) {
             ViewGroup.LayoutParams layoutParams = mImgRight.getLayoutParams();
             layoutParams.width = width;
             layoutParams.height = height;
             mImgRight.setLayoutParams(layoutParams);
         }
     }
+
     private void initRefresh() {
         mRefreshLayout = findViewById(R.id.refreshlayout);
-        if (mRefreshLayout!=null){
+        if (mRefreshLayout != null) {
             mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
                 @Override
                 public void onRefresh(RefreshLayout refreshLayout) {
@@ -256,37 +275,42 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             });
         }
     }
-    protected void refreshNetData(){
+
+    protected void refreshNetData() {
         mRefreshLayout.setNoMoreData(false);
         mCurrentPager = 1;
         getListDataFromNet();
     }
-    protected void loadMoreNetData(){
-        mCurrentPager ++;
+
+    protected void loadMoreNetData() {
+        mCurrentPager++;
         getListDataFromNet();
     }
 
-    protected void getListDataFromNet(){
+    protected void getListDataFromNet() {
 
     }
 
-    protected  void onClickLeft(){
+    protected void onClickLeft() {
 
     }
-    protected  void onClickRight(){
+
+    protected void onClickRight() {
 
     }
 
 
     protected abstract int getLayoutId();
+
     protected abstract void initIntent();
+
     protected abstract void initCircle();
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mCompositeDisposable!=null){
+        if (mCompositeDisposable != null) {
             mCompositeDisposable.clear();
         }
         unbinder.unbind();
@@ -294,10 +318,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
     }
 
 
-
     @Override
     public void addDisposable(Disposable disposable) {
-        if (mCompositeDisposable!=null) {
+        if (mCompositeDisposable != null) {
             mCompositeDisposable.add(disposable);
         }
     }
@@ -306,7 +329,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
     public Context getContext() {
         return this;
     }
-    public Activity getActivity(){
+
+    public Activity getActivity() {
         return this;
     }
 
