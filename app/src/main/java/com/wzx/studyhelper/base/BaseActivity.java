@@ -84,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
     }
 
     protected void setStatusBar() {
-        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.app_theme_color));
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.whitecolor));
     }
 
     protected View getEmptyView(){

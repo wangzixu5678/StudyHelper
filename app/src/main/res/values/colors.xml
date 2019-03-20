@@ -7,4 +7,6 @@
     <color name="app_theme_color">#1afa29</color>
 
     <color name="linecolor">#ececec</color>
+
+    <color name="whitecolor">#ffffff</color>
 </resources>

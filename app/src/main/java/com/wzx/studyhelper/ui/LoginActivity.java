@@ -28,10 +28,6 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
     @BindView(R.id.btn_login)
     Button mBtnLogin;
 
-    @Override
-    protected void setStatusBar() {
-        StatusBarCompat.setTranslucent(getWindow(),true);
-    }
 
     @Override
     protected int getLayoutId() {
