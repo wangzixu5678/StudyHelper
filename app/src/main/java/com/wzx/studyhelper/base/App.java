@@ -7,6 +7,9 @@ import android.support.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
 import com.hjq.toast.ToastUtils;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMOptions;
+import com.hyphenate.easeui.EaseUI;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -49,7 +52,14 @@ public class App extends Application {
         mContext = this;
         SharedPreferencesUtil.init(this,"studyhelper",MODE_PRIVATE);
         ToastUtils.init(this);
+        initEaseUI();
+    }
 
+    private void initEaseUI() {
+        EMOptions options = new EMOptions();
+        options.setAcceptInvitationAlways(false);
+        options.setAutoLogin(true);
+        EaseUI.getInstance().init(this, options);
     }
 
     @Override

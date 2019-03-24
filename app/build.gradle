@@ -26,14 +26,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation support.constraintLayout
     implementation support.supportV4
     implementation support.supportAppcompatV7
     implementation support.design
     implementation support.recyclerview
     implementation support.cardview
-
     implementation ext.baseRecyclerViewAdapterHelper
     implementation ext.butterknife
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
@@ -57,29 +56,20 @@ dependencies {
     implementation ext.agentWeb
     implementation ext.uCrop
     implementation ext.spinKit
-
     implementation ext.stetho
     implementation ext.stethoOkhttp
-
     implementation ext.leakCanary
-
     implementation ext.toast
-
-
     implementation ext.umengCommon
     implementation ext.umengAnalytics
-
     implementation ext.logUtils
     implementation ext.flexbox
-
     implementation ext.tablatout
-
     implementation ext.animutils
-
     implementation ext.particleview
     /**
      * 网络框架 EaseHttp
      * MVP 框架 XMVP
      */
-
+    implementation project(':easeui')
 }
