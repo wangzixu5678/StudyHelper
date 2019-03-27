@@ -36,14 +36,8 @@ public class HomeActivity extends BaseActivity {
     protected void initCircle() {
         initTab();
 
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
-        Log.d("AAA", "initCircle: ");
+        Log.d("AAA", "initCircle: 1");
+
     }
 
     private void initTab() {
