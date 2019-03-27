@@ -35,11 +35,6 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void initCircle() {
         initTab();
-
-        Log.d("AAA", "initCircle: 1");
-        Log.d("AAA", "initCircle: 2");
-        Log.d("AAA", "initCircle: 1");
-        Log.d("AAA", "initCircle: 3");
     }
 
     private void initTab() {
