@@ -16,14 +16,10 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.db.utils.DaoManager;
 import com.wzx.studyhelper.ui.chat.utils.ChatHelper;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Created by hdxy on 2018/11/30.

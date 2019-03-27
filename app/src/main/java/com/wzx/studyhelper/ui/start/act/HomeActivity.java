@@ -1,5 +1,7 @@
 package com.wzx.studyhelper.ui.start.act;
 
+import android.util.Log;
+
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.wzx.studyhelper.R;
@@ -33,6 +35,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void initCircle() {
         initTab();
+
 
     }
 
