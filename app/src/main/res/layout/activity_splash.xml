@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#4CAF50"
-    tools:context="com.wzx.studyhelper.ui.SplashActivity">
+    tools:context="com.wzx.studyhelper.ui.start.act.SplashActivity">
 
     <me.wangyuwei.particleview.ParticleView
         android:id="@+id/pv_logo"

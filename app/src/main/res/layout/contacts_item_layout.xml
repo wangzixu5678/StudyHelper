@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x65"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+    <ImageView
+        android:src="@drawable/avatar_default"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_gravity="center_vertical"
+        android:layout_width="@dimen/x50"
+        android:layout_height="@dimen/x50" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_gravity="center_vertical"
+        tools:text="王小明"
+        style="@style/text_16_000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

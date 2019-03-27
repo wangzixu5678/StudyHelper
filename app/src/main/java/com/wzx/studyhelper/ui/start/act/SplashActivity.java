@@ -1,7 +1,4 @@
-package com.wzx.studyhelper.ui;
-
-import android.animation.ValueAnimator;
-import android.os.Bundle;
+package com.wzx.studyhelper.ui.start.act;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.wzx.studyhelper.R;
@@ -9,7 +6,6 @@ import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.utils.SkipUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import me.wangyuwei.particleview.ParticleView;
 
 public class SplashActivity extends BaseActivity {

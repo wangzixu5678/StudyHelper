@@ -1,13 +1,7 @@
-package com.wzx.studyhelper.ui;
-
-import android.view.animation.Animation;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.TranslateAnimation;
+package com.wzx.studyhelper.ui.start.act;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
-import com.github.hujiaweibujidao.wava.Techniques;
-import com.github.hujiaweibujidao.wava.YoYo;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.common.bean.TabEntity;

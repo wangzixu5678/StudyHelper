@@ -1,4 +1,4 @@
-package com.wzx.studyhelper.ui.chat;
+package com.wzx.studyhelper.ui.chat.fragment;
 
 import com.hyphenate.easeui.ui.EaseChatFragment;
 

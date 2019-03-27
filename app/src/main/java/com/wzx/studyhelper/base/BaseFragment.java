@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +41,7 @@ public abstract class BaseFragment extends Fragment {
     private RefreshLayout mRefreshLayout;
     private boolean mIsVisible;
     private boolean mIsPrepare;
+    private RecyclerView mRecyclerView;
 
 
     @Nullable
@@ -67,6 +72,9 @@ public abstract class BaseFragment extends Fragment {
         initTitle();
         initRefresh();
     }
+
+
+
     protected void setBackTitle(String title,Object rightRes){
         if (mTvTitle!=null){
             mTvTitle.setText(title);

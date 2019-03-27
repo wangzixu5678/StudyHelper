@@ -112,16 +112,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
          */
         initTitle();
         initRefresh();
-        initRv();
+
     }
 
-    protected void initRv() {
-        mRecyclerView = findViewById(R.id.recyclerview);
-        if (mRecyclerView != null) {
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, OrientationHelper.VERTICAL));
-        }
-    }
+
 
 
     private void initTitle() {

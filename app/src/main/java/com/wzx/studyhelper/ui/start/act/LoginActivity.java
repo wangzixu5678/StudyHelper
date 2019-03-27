@@ -1,13 +1,15 @@
-package com.wzx.studyhelper.ui;
+package com.wzx.studyhelper.ui.start.act;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.githang.statusbar.StatusBarCompat;
 import com.hjq.toast.ToastUtils;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
@@ -58,8 +60,7 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
                 HttpManager.getInstance().login(this, StringUtil.judgeString(mEtPhone.getText().toString()), mEtPassword.getText().toString(), new ResponseCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
-                        ToastUtils.show("登录成功");
-                        SkipUtils.goHomeAct(getContext());
+                        iMLogin();
                     }
                 });
                 break;
@@ -85,5 +86,28 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
             mBtnLogin.setEnabled(false);
             mBtnLogin.setBackgroundResource(R.drawable.btn_gray_bg);
         }
+    }
+
+    public void iMLogin(){
+        EMClient.getInstance().login(mEtPhone.getText().toString(),mEtPassword.getText().toString(),new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                EMClient.getInstance().groupManager().loadAllGroups();
+                EMClient.getInstance().chatManager().loadAllConversations();
+                ToastUtils.show("登录成功");
+                SkipUtils.goHomeAct(getContext());
+                finish();
+            }
+            @Override
+            public void onProgress(int progress, String status) {
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                ToastUtils.show("登录成功");
+                SkipUtils.goHomeAct(getContext());
+                finish();
+            }
+        });
     }
 }

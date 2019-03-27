@@ -7,7 +7,7 @@ ext {
     android = [
             compileSdkVersion: 27,
             buildToolsVersion: "27.0.3",
-            applicationId    : "com.example.hdxy.baseproject",
+            applicationId    : "com.wzx.studyhelper",
             minSdkVersion    : 16,
             targetSdkVersion : 27,
             versionCode      : 1,
@@ -96,6 +96,13 @@ ext {
     //动画效果库
     animutils = 'com.github.hujiaweibujidao:wava:1.0.0'
 
+    //进度条
     particleview = 'me.wangyuwei:ParticleView:1.0.2'
+
+    //左滑删除
+    swipeMenuLayout = 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
+
+    //数据库
+    greendao = 'org.greenrobot:greendao:3.2.2'
 
 }

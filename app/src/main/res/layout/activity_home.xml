@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.HomeActivity">
+    tools:context=".ui.start.act.HomeActivity">
     <com.wzx.studyhelper.widget.NoScrollViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"

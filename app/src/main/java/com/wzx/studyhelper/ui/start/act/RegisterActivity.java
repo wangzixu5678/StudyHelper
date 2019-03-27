@@ -1,6 +1,5 @@
-package com.wzx.studyhelper.ui;
+package com.wzx.studyhelper.ui.start.act;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.wzx.studyhelper.http.ResponseCallback;
 import com.wzx.studyhelper.utils.StringUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity implements TextWatcher {
