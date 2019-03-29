@@ -1,6 +1,5 @@
 package com.wzx.studyhelper.ui.start.act;
 
-import android.util.Log;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
