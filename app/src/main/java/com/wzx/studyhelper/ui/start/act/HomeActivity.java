@@ -3,6 +3,7 @@ package com.wzx.studyhelper.ui.start.act;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.hjq.toast.ToastUtils;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.common.bean.TabEntity;
@@ -28,7 +29,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initIntent() {
-
+        ToastUtils.show("dev1");
     }
 
     @Override
