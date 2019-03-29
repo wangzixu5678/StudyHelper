@@ -20,7 +20,7 @@
                 android:layout_height="@dimen/x45"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x14" />
-            <com.wzx.studyhelper.widget.badgetextview.MaterialBadgeTextView
+            <com.wzx.studyhelper.widget.MaterialBadgeTextView
                 android:id="@+id/tv_msg_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

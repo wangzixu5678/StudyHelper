@@ -30,6 +30,8 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void initIntent() {
 
+        Log.d("AAA", "initIntent: " +"master");
+
     }
 
     @Override

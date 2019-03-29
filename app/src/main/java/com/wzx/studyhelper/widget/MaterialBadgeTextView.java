@@ -1,4 +1,4 @@
-package com.wzx.studyhelper.widget.badgetextview;
+package com.wzx.studyhelper.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
