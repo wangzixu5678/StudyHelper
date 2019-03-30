@@ -29,7 +29,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initIntent() {
-        ToastUtils.show("dev1");
+
     }
 
     @Override
