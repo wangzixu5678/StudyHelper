@@ -12,6 +12,9 @@ import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
+import com.wzx.studyhelper.utils.Constants;
+import com.wzx.studyhelper.utils.InputMethodManagerUtils;
+import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.utils.StringUtil;
 
 import butterknife.BindView;
@@ -61,7 +64,8 @@ public class RegisterActivity extends BaseActivity implements TextWatcher {
 
 
     @OnClick(R.id.btn_register)
-    public void onViewClicked() {
+    public void onViewClicked(View view) {
+        InputMethodManagerUtils.hideSoftInput(this,view);
         if (mEtPassword.getText().toString().equals(mEtPassword2.getText().toString())) {
             HttpManager.getInstance().register(this,
                     StringUtil.judgeString(mEtPhone.getText().toString()),
@@ -70,7 +74,8 @@ public class RegisterActivity extends BaseActivity implements TextWatcher {
                     new ResponseCallback<String>() {
                         @Override
                         public void onSuccess(String s) {
-                            ToastUtils.show(s);
+                            SharedPreferencesUtil.getInstance().putString(Constants.USER_PHONE,mEtPhone.getText().toString().trim());
+                            ToastUtils.show("恭喜您，注册成功!");
                             finish();
                         }
                     });

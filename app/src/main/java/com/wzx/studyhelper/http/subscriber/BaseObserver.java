@@ -2,6 +2,9 @@ package com.wzx.studyhelper.http.subscriber;
 
 
 
+import android.util.Log;
+
+import com.apkfuns.logutils.LogUtils;
 import com.google.gson.stream.MalformedJsonException;
 import com.hjq.toast.ToastUtils;
 import com.wzx.studyhelper.base.BaseImpl;
@@ -64,6 +67,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
         }else {
             String message = e.getMessage();
             onBaseError(ApiException.Code_Default, StringUtil.judgeString(message));
+            LogUtils.d(message);
         }
 
     }

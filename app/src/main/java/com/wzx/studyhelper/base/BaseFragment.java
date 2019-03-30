@@ -23,9 +23,10 @@ import com.wzx.studyhelper.R;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements BaseImpl{
 
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private View mRootView;
@@ -73,7 +74,17 @@ public abstract class BaseFragment extends Fragment {
         initRefresh();
     }
 
+    @Override
+    public void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.add(disposable);
+        }
+    }
 
+    @Override
+    public Context getContext() {
+        return getActivity();
+    }
 
     protected void setBackTitle(String title,Object rightRes){
         if (mTvTitle!=null){

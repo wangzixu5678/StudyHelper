@@ -6,8 +6,8 @@ package com.wzx.studyhelper.http.api;
  */
 public class ApiResponse<T>{
     private int code;
-    private T response;
-    private String message;
+    private T data;
+    private String msg;
 
 
     public int getCode() {
@@ -19,27 +19,27 @@ public class ApiResponse<T>{
     }
 
     public T getResponse() {
-        return response;
+        return data;
     }
 
     public void setResponse(T response) {
-        this.response = response;
+        this.data = response;
     }
 
     public String getMessage() {
-        return message;
+        return msg;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.msg = message;
     }
 
     @Override
     public String toString() {
         return "ApiResponse{" +
                 ", code=" + code +
-                ", response=" + response +
-                ", message='" + message + '\'' +
+                ", response=" + data +
+                ", message='" + msg + '\'' +
                 '}';
     }
 }

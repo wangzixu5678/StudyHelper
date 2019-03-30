@@ -9,4 +9,13 @@ public class Constants {
     //等待审核中
     public static final int WAITING_FRIEND = 3;
 
+
+    public static final String USER_PHONE = "userphone";
+    public static final String USER_NAME = "username";
+    public static final String USER_PASSWORD = "userpassword";
+    public static final String USER_ID = "userid";
+
+
+    public static final int REQUEST_IMGSEL = 101;
+
 }

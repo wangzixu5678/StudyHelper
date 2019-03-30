@@ -105,4 +105,7 @@ ext {
     //数据库
     greendao = 'org.greenrobot:greendao:3.2.2'
 
+    //图片选择框架
+    matisse =  'com.zhihu.android:matisse:0.5.1'
+
 }

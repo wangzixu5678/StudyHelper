@@ -14,6 +14,10 @@ import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
+import com.wzx.studyhelper.ui.start.bean.LoginResultBean;
+import com.wzx.studyhelper.utils.Constants;
+import com.wzx.studyhelper.utils.InputMethodManagerUtils;
+import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.utils.SkipUtils;
 import com.wzx.studyhelper.utils.StringUtil;
 
@@ -45,6 +49,9 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
     @Override
     protected void initCircle() {
         setCustomTitle(null, "登录", null);
+
+        mEtPhone.setText(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
+        mEtPhone.setSelection(mEtPhone.length());
     }
 
 
@@ -57,9 +64,14 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
                 SkipUtils.goRegisterAct(this);
                 break;
             case R.id.btn_login:
-                HttpManager.getInstance().login(this, StringUtil.judgeString(mEtPhone.getText().toString()), mEtPassword.getText().toString(), new ResponseCallback<String>() {
+                InputMethodManagerUtils.hideSoftInput(this,view);
+                HttpManager.getInstance().login(this, StringUtil.judgeString(mEtPhone.getText().toString()), mEtPassword.getText().toString(), new ResponseCallback<LoginResultBean>() {
                     @Override
-                    public void onSuccess(String s) {
+                    public void onSuccess(LoginResultBean loginResultBean) {
+                        SharedPreferencesUtil.getInstance().putString(Constants.USER_PHONE,loginResultBean.getMobile());
+                        SharedPreferencesUtil.getInstance().putString(Constants.USER_ID,loginResultBean.getId());
+                        SharedPreferencesUtil.getInstance().putString(Constants.USER_NAME,loginResultBean.getNickname());
+                        SharedPreferencesUtil.getInstance().putString(Constants.USER_PASSWORD,loginResultBean.getPassword());
                         iMLogin();
                     }
                 });

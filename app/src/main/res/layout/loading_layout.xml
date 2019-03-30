@@ -31,7 +31,7 @@
             android:layout_below="@id/img_loading"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="4dp"
-            android:text="加载中..."
+            android:text="数据处理中..."
             android:textColor="#fff"
             android:textSize="14sp" />
     </RelativeLayout>
