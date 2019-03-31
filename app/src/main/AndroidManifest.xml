@@ -68,7 +68,9 @@
         </receiver>
 
         <activity android:name=".ui.chat.act.ChatActivity" />
-        <activity android:name=".ui.chat.act.FriendRequestActivity"></activity>
+        <activity android:name=".ui.chat.act.FriendRequestActivity" />
+        <activity android:name=".ui.coursetab.act.CourseDetailActivity" />
+        <activity android:name=".ui.coursetab.act.CourseCreateActivity"></activity>
     </application>
 
 </manifest>

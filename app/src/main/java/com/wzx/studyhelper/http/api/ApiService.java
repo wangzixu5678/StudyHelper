@@ -43,8 +43,14 @@ public interface ApiService {
     /**
      * 上传课程表
      */
-    @POST("/study/file//uploadFile")
+    @POST("/study/file/uploadFile")
     Observable<ApiResponse<CourseUploadResultBean>> uploadFile(@Body RequestBody body);
+
+    /**
+     * 查询课程表
+     */
+    @POST("/study/file/queryByScheduleCard")
+    Observable<String> queryByScheduleCard(@Body JsonObject value);
 
     /**
      * 新增笔记
@@ -68,7 +74,7 @@ public interface ApiService {
     /**
      * 作业新增
      */
-    @POST("study/operatio/insertoperatio")
+    @POST("/study/operatio/insertoperatio")
     Observable<String> insertoperatio(@Body JsonObject value);
 
 

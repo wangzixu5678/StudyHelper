@@ -69,6 +69,35 @@ public class HttpManager extends RetrofitManager {
                 responseCallback.onSuccess(data);
             }
         });
+    }
 
+
+     public void queryByScheduleCard(BaseImpl base, String userId, String grade, String term, final ResponseCallback<String> responseCallback){
+         JsonObject paramsMap = getParamsMap();
+         paramsMap.addProperty("userId",userId);
+         paramsMap.addProperty("grade",grade);
+         paramsMap.addProperty("term",term);
+         Observable<String> observable = getApiService().queryByScheduleCard(paramsMap);
+         toSubscribeStr(observable, new DialogObserver<String>(base) {
+             @Override
+             protected void onBaseNext(String data) {
+                 responseCallback.onSuccess(data);
+             }
+         });
+     }
+
+     //新增作业
+    public void insertoperatio(BaseImpl base, String userId, String grade, String term, final ResponseCallback<String> responseCallback){
+        JsonObject paramsMap = getParamsMap();
+        paramsMap.addProperty("userId",userId);
+        paramsMap.addProperty("grade",grade);
+        paramsMap.addProperty("term",term);
+        Observable<String> observable = getApiService().insertoperatio(paramsMap);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.coursetab.act.CourseCreateActivity">
+    <include layout="@layout/common_title"/>
+    <LinearLayout
+        android:id="@+id/ll_sel_grade"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60">
+        <TextView
+            android:id="@+id/tv_grade"
+            android:textColor="#000"
+            android:layout_marginLeft="@dimen/x14"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/x20"
+            android:hint="点击请选择年级"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View style="@style/lineH1"/>
+    <LinearLayout
+        android:id="@+id/ll_sel_term"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60">
+        <TextView
+            android:id="@+id/tv_term"
+            android:textColor="#000"
+            android:layout_marginLeft="@dimen/x14"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/x20"
+            android:hint="点击请选择学期"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View style="@style/lineH1"/>
+    <ImageView
+        android:id="@+id/img_course"
+        android:layout_marginLeft="@dimen/x10"
+        android:scaleType="centerCrop"
+        android:background="@drawable/img_default_bg"
+        android:layout_width="@dimen/x240"
+        android:layout_height="@dimen/y180"
+        android:layout_marginTop="@dimen/y10" />
+
+    <Button
+        android:id="@+id/btn_create_coursetab"
+        android:layout_marginTop="@dimen/x14"
+        android:textColor="#fff"
+        android:text="创建课程表"
+        android:textSize="@dimen/x20"
+        android:background="@drawable/btn_bg"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -80,6 +80,12 @@ dependencies {
     implementation ext.greendao
 
     implementation ext.matisse
+
+    implementation ext.photoview
+
+    implementation ext.compressor
+
+    implementation ext.pickview
 }
 
 greendao {
