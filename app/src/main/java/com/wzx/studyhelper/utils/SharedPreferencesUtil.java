@@ -200,4 +200,9 @@ public class SharedPreferencesUtil {
         editor.commit();
         return this;
     }
+
+    public void clear(){
+        editor.clear();
+        editor.commit();
+    }
 }

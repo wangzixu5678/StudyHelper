@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+    <include layout="@layout/common_title" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_sel_course"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="课程名称:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/et_course_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="点击请选择课程名称"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:id="@+id/ll_sel_term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x11"
+                android:layout_marginRight="@dimen/x14"
+                android:minHeight="@dimen/y60"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="名称(内容):"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_work_name"
+                    style="@style/common_edit_nosingle_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请输入作业名称/内容"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:id="@+id/ll_sel_startime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="开始时间:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_star_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:hint="点击选择开始时间"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:id="@+id/ll_sel_endtime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="结束时间:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:hint="点击选择结束时间"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <Button
+                android:id="@+id/btn_change_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginTop="@dimen/y10"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_bg"
+                android:text="修改作业内容"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+
+            <Button
+                android:id="@+id/btn_delete_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginTop="@dimen/y10"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_red_bg"
+                android:text="删除作业内容"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

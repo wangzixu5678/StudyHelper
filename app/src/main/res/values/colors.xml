@@ -8,5 +8,7 @@
 
     <color name="linecolor">#ececec</color>
 
-    <color name="whitecolor">#ffffff</color>
+    <color name="whitecolor">#fff</color>
+
+    <color name="placeholdercolor">#d8d8d8</color>
 </resources>

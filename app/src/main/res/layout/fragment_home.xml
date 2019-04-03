@@ -3,9 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#fff"
     tools:context=".ui.coursetab.fragment.CourseTabFragment">
-    <include layout="@layout/common_title"/>
+    <android.support.v7.widget.Toolbar
+        app:contentInsetStart="0dp"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="我的课程表" />
+
+    </android.support.v7.widget.Toolbar>
     <Button
         android:textColor="#fff"
         android:textSize="@dimen/x20"
@@ -17,6 +35,8 @@
         android:text="创建课程"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <View style="@style/lineH1"
+        android:layout_marginTop="@dimen/y10"/>
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="@dimen/y10"
         android:id="@+id/recyclerview"

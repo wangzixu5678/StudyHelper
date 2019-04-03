@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
     <ImageView
+        android:transitionName="animimg"
         android:layout_marginTop="@dimen/y10"
         android:scaleType="centerCrop"
         android:src="#d8d8d8"

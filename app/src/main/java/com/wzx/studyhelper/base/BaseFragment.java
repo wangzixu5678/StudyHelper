@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wzx.studyhelper.R;
+import com.youth.banner.WeakHandler;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -42,7 +43,8 @@ public abstract class BaseFragment extends Fragment implements BaseImpl{
     private RefreshLayout mRefreshLayout;
     private boolean mIsVisible;
     private boolean mIsPrepare;
-    private RecyclerView mRecyclerView;
+    protected boolean isRequestRefresh;
+    protected WeakHandler mHandler = new WeakHandler();
 
 
     @Nullable
@@ -72,6 +74,10 @@ public abstract class BaseFragment extends Fragment implements BaseImpl{
     private void initCommonUI() {
         initTitle();
         initRefresh();
+    }
+
+    public View getEmptyView(){
+        return LayoutInflater.from(getContext()).inflate(R.layout.empty_layout,null,false);
     }
 
     @Override

@@ -49,7 +49,6 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
     @Override
     protected void initCircle() {
         setCustomTitle(null, "登录", null);
-
         mEtPhone.setText(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
         mEtPhone.setSelection(mEtPhone.length());
     }

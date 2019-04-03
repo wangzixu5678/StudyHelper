@@ -70,7 +70,16 @@
         <activity android:name=".ui.chat.act.ChatActivity" />
         <activity android:name=".ui.chat.act.FriendRequestActivity" />
         <activity android:name=".ui.coursetab.act.CourseDetailActivity" />
-        <activity android:name=".ui.coursetab.act.CourseCreateActivity"></activity>
+        <activity android:name=".ui.coursetab.act.CourseCreateActivity" />
+        <activity
+            android:name=".ui.homework.act.HomeWorkDetailActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".ui.note.act.NoteDetailActivity" />
+        <activity android:name=".ui.examination.act.ExaminationActivity" />
+        <activity android:name=".ui.examination.act.ExaminationDetailActivity"/>
+        <activity android:name=".ui.diffcult.act.DifficultActivity" />
+        <activity android:name=".ui.diffcult.act.DiffcultDetailActivity"/>
+
     </application>
 
 </manifest>

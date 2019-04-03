@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.examination.fragment.ExaminaionFragment">
+    <include layout="@layout/common_title"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        app:layout_behavior="com.wzx.studyhelper.utils.ScrollAwareFABBehavior"
+        android:layout_width="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:id="@+id/floatbutton"
+        app:elevation="6dp"
+        android:clickable="true"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/fabbg"
+        app:rippleColor="#0097a7"
+        app:srcCompat="@drawable/ic_create_white_76dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        app:pressedTranslationZ="12dp"
+        android:layout_height="wrap_content" />
+</android.support.design.widget.CoordinatorLayout>

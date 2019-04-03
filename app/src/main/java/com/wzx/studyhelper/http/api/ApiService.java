@@ -84,9 +84,43 @@ public interface ApiService {
     @POST("/study/operatio/updayeoperatio")
     Observable<String> updayeoperatio(@Body JsonObject value);
 
-//    /**
-//     * 笔记查询
-//     */
-//    @POST("/study/operatio/updayeoperatio")
-//    Observable<String> updayeoperatio(@Body JsonObject value);
+    /**
+     * 作业查询
+     */
+    @POST("/study/operatio/selectByoperation")
+    Observable<String> selectByoperation(@Body JsonObject value);
+
+    /**
+     * 新增考试记录
+     */
+    @POST("/study/examination/insertExamination")
+    Observable<String> insertExamination(@Body JsonObject value);
+    /**
+     * 修改考试记录
+     */
+    @POST("/study/examination/updateExamination")
+    Observable<String> updateExamination(@Body JsonObject value);
+    /**
+     * 查询考试记录
+     */
+    @POST("/study/examination/selectByExamination")
+    Observable<String> selectByExamination(@Body JsonObject value);
+
+    /**
+     * 新增难点记录
+     */
+    @POST("/study/difficult/insertDifficult")
+    Observable<String> insertDifficult(@Body JsonObject value);
+
+    /**
+     * 修改难点记录
+     */
+    @POST("/study/difficult/updateDifficult")
+    Observable<String> updateDifficult(@Body JsonObject value);
+
+    /**
+     * 难点查询
+     */
+    @POST("/study/difficult/selectByDifficult")
+    Observable<String> selectByDifficult(@Body JsonObject value);
 }

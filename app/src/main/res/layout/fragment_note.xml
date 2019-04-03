@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.note.fragment.NoteFragment">
+
+    <include layout="@layout/common_title"/>
+    <Button
+        android:textColor="#fff"
+        android:textSize="@dimen/x20"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:background="@drawable/btn_bg"
+        android:id="@+id/btn_create_note"
+        android:text="创建笔记"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View style="@style/lineH1"
+        android:layout_marginTop="@dimen/y10"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

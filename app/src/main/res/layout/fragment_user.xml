@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.start.fragment.UserFragment">
-
-    <Button
-        android:text="退出登录"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.start.fragment.UserFragment"
+    android:orientation="vertical">
+    <include layout="@layout/common_title"/>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+        android:layout_height="match_parent"
+       >
+        <ImageView
+            android:id="@+id/img_user_icon"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/x80"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/y20"
+            android:src="@drawable/avatar_default" />
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_user_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y10"
+            android:layout_marginBottom="@dimen/y10"
+            android:textColor="#000"
+            android:textSize="@dimen/x18"
+            android:textStyle="bold"
+            tools:text="笨蛋小灰猪" />
+
+        <Button
+            android:id="@+id/btn_change_icon"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y40"
+            android:layout_below="@id/tv_nickname"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_bg"
+            android:text="更换头像"
+            android:textColor="#fff"
+            android:textSize="@dimen/x14" />
+
+        <Button
+            android:id="@+id/btn_loginout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x14"
+            android:layout_marginRight="@dimen/x14"
+            android:layout_marginBottom="@dimen/y30"
+            android:background="@drawable/btn_red_bg"
+            android:text="退出登录"
+            android:textColor="#fff"
+            android:textSize="@dimen/x20" />
+    </RelativeLayout>
+</LinearLayout>

@@ -53,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private ImageView mImgLeft;
     private TextView mTvLeft;
-    private FrameLayout mFlLeftContent;
+    protected FrameLayout mFlLeftContent;
     private ImageView mImgRight;
     private TextView mTvRight;
     private FrameLayout mFlRightContent;
@@ -155,7 +155,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
             mFlLeftContent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    finish();
+                   onBackPressed();
                 }
             });
         }

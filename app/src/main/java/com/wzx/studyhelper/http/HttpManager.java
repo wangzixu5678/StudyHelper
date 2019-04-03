@@ -87,13 +87,132 @@ public class HttpManager extends RetrofitManager {
      }
 
      //新增作业
-    public void insertoperatio(BaseImpl base, String userId, String grade, String term, final ResponseCallback<String> responseCallback){
-        JsonObject paramsMap = getParamsMap();
-        paramsMap.addProperty("userId",userId);
-        paramsMap.addProperty("grade",grade);
-        paramsMap.addProperty("term",term);
+    public void insertoperatio(BaseImpl base,JsonObject paramsMap, final ResponseCallback<String> responseCallback){
         Observable<String> observable = getApiService().insertoperatio(paramsMap);
         toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void updayeoperatio(BaseImpl base,JsonObject paramsMap, final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updayeoperatio(paramsMap);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    //查询作业
+    public void selectByoperation(BaseImpl base,String id,String userId,final ResponseCallback<String> responseCallback){
+        JsonObject paramsMap = getParamsMap();
+        paramsMap.addProperty("userId",userId);
+        paramsMap.addProperty("id",id);
+        Observable<String> observable = getApiService().selectByoperation(paramsMap);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    //查询笔记
+    public void selectByNote(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().selectByNote(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    //新增笔记
+
+    public void insertnote(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().insertnote(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+    //修改笔记
+    public void updatenote(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updatenote(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void insertExamination(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().insertExamination(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    public void updateExamination(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updateExamination(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    public void selectByExamination(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().selectByExamination(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void selectByDifficult(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().selectByDifficult(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void insertDifficult(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().insertDifficult(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void updateDifficult(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updateDifficult(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
             @Override
             protected void onBaseNext(String data) {
                 responseCallback.onSuccess(data);

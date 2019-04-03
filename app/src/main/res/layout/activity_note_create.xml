@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.note.act.NoteDetailActivity">
+    <include layout="@layout/common_title"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_sel_course"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="课程名称:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_course_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="点击请选择课程名称"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:id="@+id/ll_sel_term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x11"
+                android:layout_marginRight="@dimen/x14"
+                android:minHeight="@dimen/y60"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="知识点名称:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_knowledgename"
+                    style="@style/common_edit_nosingle_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请输入作业名称/内容"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <RelativeLayout
+                android:id="@+id/ll_sel_startime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_answer"
+                    android:layout_marginTop="@dimen/y14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="知识点答案"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_knowledg_answer"
+                    android:paddingBottom="@dimen/y4"
+                    android:paddingRight="@dimen/x4"
+                    android:paddingLeft="@dimen/x4"
+                    android:paddingTop="@dimen/y4"
+                    android:background="@drawable/edit_bg"
+                    android:textColor="#f00"
+                    android:textSize="@dimen/x14"
+                    android:layout_marginTop="@dimen/y4"
+                    android:layout_marginBottom="@dimen/y10"
+                    android:layout_marginRight="@dimen/x14"
+                    android:layout_below="@id/tv_answer"
+                    android:hint="请填写知识点答案"
+                    style="@style/common_edit_nosingle_style"
+                    android:minHeight="@dimen/y120"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <View style="@style/lineH1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginTop="@dimen/y10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_mymind"
+                    android:text="个人心得:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_my_mind"
+                    android:paddingBottom="@dimen/y4"
+                    android:paddingRight="@dimen/x4"
+                    android:paddingLeft="@dimen/x4"
+                    android:paddingTop="@dimen/y4"
+                    android:background="@drawable/edit_bg"
+                    android:textColor="@color/app_theme_color"
+                    android:textSize="@dimen/x14"
+                    android:layout_marginTop="@dimen/y4"
+                    android:layout_marginBottom="@dimen/y10"
+                    android:layout_marginRight="@dimen/x14"
+                    android:layout_below="@id/tv_mymind"
+                    android:hint="请填写知识点答案"
+                    style="@style/common_edit_nosingle_style"
+                    android:minHeight="@dimen/y120"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <View style="@style/lineH1" />
+
+            <Button
+                android:layout_marginBottom="@dimen/y10"
+                android:id="@+id/btn_change_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginTop="@dimen/y20"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_bg"
+                android:text="修改笔记内容"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+
+            <Button
+                android:layout_marginBottom="@dimen/y160"
+                android:id="@+id/btn_delete_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_red_bg"
+                android:text="删除笔记"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -18,7 +18,7 @@ public class Constants {
 
     public static final int REQUEST_IMGSEL = 101;
 
-
+    public static final String BEAN_KEY  = "beankey";
 
     public static final String ID_KEY  = "idkey";
 
