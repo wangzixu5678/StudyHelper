@@ -94,6 +94,12 @@ public class ScheduleDetailActivity extends BaseActivity {
 
     private void initUI() {
         if (mDataBean != null) {
+            if (mDataBean.getScheduleType()==1){
+                mTvScheduletype.setText("日常学习计划");
+            }else {
+                mTvScheduletype.setText("考试复习计划");
+            }
+            mScheduleTypeNumber = mDataBean.getScheduleType();
             mTvStarTime.setText(DateUtils.getFormatTime2(mDataBean.getStartTimeDto()));
             mTvEndTime.setText(DateUtils.getFormatTime2(mDataBean.getEndTimeDto()));
             mEtScheduleName.setText(mDataBean.getScheduleName());

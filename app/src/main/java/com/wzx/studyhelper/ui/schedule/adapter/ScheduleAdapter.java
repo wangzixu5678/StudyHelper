@@ -27,7 +27,7 @@ public class ScheduleAdapter extends BaseQuickAdapter<ScheduleListBean.DataBean,
         switch (item.getCompletionSchedule()) {
             case 1:
                 helper.setText(R.id.tv_schedule_status,"计划状态:准备中");
-                helper.setTextColor(R.id.tv_schedule_status,Color.YELLOW);
+                helper.setTextColor(R.id.tv_schedule_status,Color.parseColor("#ffb900"));
                 break;
             case 2:
                 helper.setTextColor(R.id.tv_schedule_status,Color.GREEN);

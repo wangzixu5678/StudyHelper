@@ -20,9 +20,17 @@ public class SelectNoteListAdapter extends BaseQuickAdapter<NoteBean,BaseViewHol
     @Override
     protected void convert(final BaseViewHolder helper, final NoteBean item) {
         helper.setText(R.id.tv_course_name,"课程名称: " + item.getCourseName());
-        helper.setText(R.id.tv_note_name,"笔记名称: " + item.getCourseName());
+        helper.setText(R.id.tv_note_name,"笔记名称: " + item.getKnowledgeName());
+
 
         CheckBox checkBox = (CheckBox) helper.getView(R.id.cb);
+
+        if (item.getIsSelected()==1){
+            checkBox.setChecked(true);
+        }else {
+            checkBox.setChecked(false);
+        }
+
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -32,7 +40,6 @@ public class SelectNoteListAdapter extends BaseQuickAdapter<NoteBean,BaseViewHol
                 }else {
                     item.setIsSelected(0);
                 }
-                notifyItemChanged(helper.getLayoutPosition());
             }
         });
     }

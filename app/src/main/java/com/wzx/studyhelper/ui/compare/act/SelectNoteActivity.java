@@ -54,10 +54,9 @@ public class SelectNoteActivity extends BaseActivity {
     @Override
     protected void onClickRight() {
         super.onClickRight();
-
         ArrayList<NoteBean> selList = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for (NoteBean noteBean : selList) {
+        for (NoteBean noteBean : mDatas) {
             if (noteBean.getIsSelected()==1){
                 sb.append(noteBean.getId()).append(",");
                 selList.add(noteBean);

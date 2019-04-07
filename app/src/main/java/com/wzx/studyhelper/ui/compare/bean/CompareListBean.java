@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.wzx.studyhelper.ui.note.bean.NoteBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompareListBean {
@@ -13,7 +14,7 @@ public class CompareListBean {
     /**
      * code : 200
      * msg : 对比记录查询成功
-     * data : [{"id":2,"userId":430590106769756160,"contrastName":"测试","noteIds":"430206677183234048,425214034339975168","createTime":"2019-04-03T13:56:36.000+0000","modifyTime":"2019-04-03T13:56:36.000+0000","deleted":0,"notes":[{"id":425214034339975168,"userId":422943498071375872,"courseName":"测试修改","courseId":1,"knowledgeName":"高数","knowledgeAnswer":"出师表","personalExperience":"先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。宫中府中，俱为一体，陟罚臧否，不宜异同。","marked":1,"createTime":"2019-03-19T08:48:46.000+0000","modifyTime":"2019-03-19T08:52:33.000+0000","deleted":0},{"id":430206677183234048,"userId":429189170500493312,"courseName":"市场调查与研究学","courseId":3,"knowledgeName":"啊KKK","knowledgeAnswer":"啦咯就来咯啦咯就来咯家","personalExperience":"啦咯啦咯啦咯啦","marked":null,"createTime":"2019-04-02T03:27:45.000+0000","modifyTime":null,"deleted":0}]}]
+     * data : [{"id":432142672183533568,"userId":429189170500493312,"contrastName":"还好","noteIds":"432140504550449152,430206677183234048","createTime":"2019-04-07T11:40:42.000+0000","modifyTime":null,"deleted":0,"notes":[{"id":430206677183234048,"userId":429189170500493312,"courseName":"市场调查与研究学","courseId":3,"knowledgeName":"啊KKK","knowledgeAnswer":"啦咯就来咯啦咯就来咯家","personalExperience":"啦咯啦咯啦咯啦","marked":null,"createTime":"2019-04-02T03:27:45.000+0000","modifyTime":null,"deleted":0},{"id":432140504550449152,"userId":429189170500493312,"courseName":"宏观经济学","courseId":4,"knowledgeName":"还干","knowledgeAnswer":"明后","personalExperience":"民工漫","marked":null,"createTime":"2019-04-07T11:32:05.000+0000","modifyTime":null,"deleted":0}]}]
      */
 
     private String code;
@@ -46,33 +47,50 @@ public class CompareListBean {
 
     public static class DataBean implements Parcelable {
         /**
-         * id : 2
-         * userId : 430590106769756160
-         * contrastName : 测试
-         * noteIds : 430206677183234048,425214034339975168
-         * createTime : 2019-04-03T13:56:36.000+0000
-         * modifyTime : 2019-04-03T13:56:36.000+0000
+         * id : 432142672183533568
+         * userId : 429189170500493312
+         * contrastName : 还好
+         * noteIds : 432140504550449152,430206677183234048
+         * createTime : 2019-04-07T11:40:42.000+0000
+         * modifyTime : null
          * deleted : 0
-         * notes : [{"id":425214034339975168,"userId":422943498071375872,"courseName":"测试修改","courseId":1,"knowledgeName":"高数","knowledgeAnswer":"出师表","personalExperience":"先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。宫中府中，俱为一体，陟罚臧否，不宜异同。","marked":1,"createTime":"2019-03-19T08:48:46.000+0000","modifyTime":"2019-03-19T08:52:33.000+0000","deleted":0},{"id":430206677183234048,"userId":429189170500493312,"courseName":"市场调查与研究学","courseId":3,"knowledgeName":"啊KKK","knowledgeAnswer":"啦咯就来咯啦咯就来咯家","personalExperience":"啦咯啦咯啦咯啦","marked":null,"createTime":"2019-04-02T03:27:45.000+0000","modifyTime":null,"deleted":0}]
+         * notes : [{"id":430206677183234048,"userId":429189170500493312,"courseName":"市场调查与研究学","courseId":3,"knowledgeName":"啊KKK","knowledgeAnswer":"啦咯就来咯啦咯就来咯家","personalExperience":"啦咯啦咯啦咯啦","marked":null,"createTime":"2019-04-02T03:27:45.000+0000","modifyTime":null,"deleted":0},{"id":432140504550449152,"userId":429189170500493312,"courseName":"宏观经济学","courseId":4,"knowledgeName":"还干","knowledgeAnswer":"明后","personalExperience":"民工漫","marked":null,"createTime":"2019-04-07T11:32:05.000+0000","modifyTime":null,"deleted":0}]
          */
 
-        private int id;
+        private long id;
         private long userId;
         private String contrastName;
         private String noteIds;
         private String createTime;
-        private String modifyTime;
+        private Object modifyTime;
         private int deleted;
-        private List<NoteBean> notes;
+        private ArrayList<NoteBean> notes;
+
 
         protected DataBean(Parcel in) {
-            id = in.readInt();
+            id = in.readLong();
             userId = in.readLong();
             contrastName = in.readString();
             noteIds = in.readString();
             createTime = in.readString();
-            modifyTime = in.readString();
             deleted = in.readInt();
+            notes = in.createTypedArrayList(NoteBean.CREATOR);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeLong(id);
+            dest.writeLong(userId);
+            dest.writeString(contrastName);
+            dest.writeString(noteIds);
+            dest.writeString(createTime);
+            dest.writeInt(deleted);
+            dest.writeTypedList(notes);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
         }
 
         public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
@@ -87,11 +105,11 @@ public class CompareListBean {
             }
         };
 
-        public int getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(long id) {
             this.id = id;
         }
 
@@ -127,11 +145,11 @@ public class CompareListBean {
             this.createTime = createTime;
         }
 
-        public String getModifyTime() {
+        public Object getModifyTime() {
             return modifyTime;
         }
 
-        public void setModifyTime(String modifyTime) {
+        public void setModifyTime(Object modifyTime) {
             this.modifyTime = modifyTime;
         }
 
@@ -143,29 +161,15 @@ public class CompareListBean {
             this.deleted = deleted;
         }
 
-        public List<NoteBean> getNotes() {
+        public ArrayList<NoteBean> getNotes() {
             return notes;
         }
 
-        public void setNotes(List<NoteBean> notes) {
+        public void setNotes(ArrayList<NoteBean> notes) {
             this.notes = notes;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
 
-        @Override
-        public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeInt(id);
-            parcel.writeLong(userId);
-            parcel.writeString(contrastName);
-            parcel.writeString(noteIds);
-            parcel.writeString(createTime);
-            parcel.writeString(modifyTime);
-            parcel.writeInt(deleted);
-        }
 
 
     }

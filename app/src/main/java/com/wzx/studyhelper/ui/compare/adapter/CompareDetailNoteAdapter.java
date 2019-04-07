@@ -17,7 +17,7 @@ public class CompareDetailNoteAdapter extends BaseQuickAdapter<NoteBean,BaseView
 
     @Override
     protected void convert(BaseViewHolder helper, NoteBean item) {
-        helper.setText(R.id.tv_hint_name,"笔记" + helper.getLayoutPosition())
+        helper.setText(R.id.tv_hint_name,"笔记" + (helper.getLayoutPosition()==0?"一":"二"))
                 .setText(R.id.tv_course_name,"课程名称: " + item.getCourseName())
                 .setText(R.id.tv_knowledge_name,"知识点: " + item.getKnowledgeName())
                 .setText(R.id.tv_knowledge_answer,"知识答案: " + item.getKnowledgeAnswer())

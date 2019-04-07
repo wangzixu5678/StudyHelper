@@ -127,17 +127,17 @@ public interface ApiService {
     /**
      * 新增计划
      */
-    @POST("/study/difficult/insertSchedule")
+    @POST("/study/schedule/insertSchedule")
     Observable<String> insertSchedule(@Body JsonObject value);
     /**
      * 修改计划
      */
-    @POST("/study/difficult/updateSchedule")
+    @POST("/study/schedule/updateSchedule")
     Observable<String> updateSchedule(@Body JsonObject value);
     /**
      * 查询计划
      */
-    @POST("/study/difficult/selectBySchedule")
+    @POST("/study/schedule/selectBySchedule")
     Observable<String> selectBySchedule(@Body JsonObject value);
 
     /**
