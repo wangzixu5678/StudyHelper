@@ -219,4 +219,36 @@ public class HttpManager extends RetrofitManager {
             }
         });
     }
+
+    public void selectBySchedule(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().selectBySchedule(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void insertSchedule(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().insertSchedule(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+
+    public void updateSchedule(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updateSchedule(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
 }

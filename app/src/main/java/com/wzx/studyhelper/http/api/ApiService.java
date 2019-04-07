@@ -123,4 +123,20 @@ public interface ApiService {
      */
     @POST("/study/difficult/selectByDifficult")
     Observable<String> selectByDifficult(@Body JsonObject value);
+
+    /**
+     * 新增计划
+     */
+    @POST("/study/difficult/insertSchedule")
+    Observable<String> insertSchedule(@Body JsonObject value);
+    /**
+     * 修改计划
+     */
+    @POST("/study/difficult/updateSchedule")
+    Observable<String> updateSchedule(@Body JsonObject value);
+    /**
+     * 查询计划
+     */
+    @POST("/study/difficult/selectBySchedule")
+    Observable<String> selectBySchedule(@Body JsonObject value);
 }

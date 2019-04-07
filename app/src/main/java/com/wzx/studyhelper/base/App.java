@@ -8,6 +8,8 @@ import android.support.multidex.MultiDex;
 import com.hjq.toast.ToastUtils;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseUI;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -52,11 +54,15 @@ public class App extends Application {
         SharedPreferencesUtil.init(this,"studyhelper",MODE_PRIVATE);
         ToastUtils.init(this);
         initEaseUI();
+        initXunFei();
         initGreenDao();
 
 
     }
 
+    private void initXunFei() {
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5ca44f7c");
+    }
 
 
     private void initGreenDao() {

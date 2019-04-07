@@ -22,6 +22,7 @@ import com.wzx.studyhelper.ui.diffcult.act.DifficultActivity;
 import com.wzx.studyhelper.ui.examination.act.ExaminationActivity;
 import com.wzx.studyhelper.ui.homework.fragment.HomeWorkFragment;
 import com.wzx.studyhelper.ui.note.fragment.NoteFragment;
+import com.wzx.studyhelper.ui.schedule.act.ScheduleActivity;
 import com.wzx.studyhelper.ui.start.adapter.LeftMenuAdapter;
 import com.wzx.studyhelper.ui.start.adapter.VpAdapter;
 import com.wzx.studyhelper.ui.coursetab.fragment.CourseTabFragment;
@@ -78,6 +79,8 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         mDatas = new ArrayList<>();
         mDatas.add( new LeftMenuBean(R.drawable.examicon,"考场记录"));
         mDatas.add( new LeftMenuBean(R.drawable.difficuteicon,"难点记录"));
+        mDatas.add( new LeftMenuBean(R.drawable.scheduleicon,"我的计划"));
+        mDatas.add( new LeftMenuBean(R.drawable.compareicon,"对比功能"));
         mDatas.add(new LeftMenuBean(R.drawable.verson_icon,"版本号 "+PhotoUtils.getAppVersionName(this)));
         mDatas.add(new LeftMenuBean(R.drawable.work_icon,"作者 XXX"));
         mLeftMenuAdapter = new LeftMenuAdapter(mDatas);
@@ -138,15 +141,28 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         mDrawerLayout.closeDrawers();
-        if (position==0){
-            //考场记录
-            Intent intent = new Intent(this,ExaminationActivity.class);
-            startActivity(intent);
-        }else if (position==1){
-            //难点记录
-            Intent intent = new Intent(this,DifficultActivity.class);
-            startActivity(intent);
+        Intent intent;
+        switch (position){
+            case 0:
+                //考场记录
+               intent = new Intent(this,ExaminationActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                //难点记录
+                intent = new Intent(this,DifficultActivity.class);
+                startActivity(intent);
+                break;
+            case 2:
+                //我的计划
+                intent = new Intent(this,ScheduleActivity.class);
+                startActivity(intent);
+                break;
+            case 3:
+                //对比功能
+                break;
         }
+
     }
 
 

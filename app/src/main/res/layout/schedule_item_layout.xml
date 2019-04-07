@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginRight="@dimen/x14"
+        android:id="@+id/tv_schedule_name"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginLeft="@dimen/x14"
+        tools:text="计划名称"
+        android:textColor="#000"
+        android:textSize="@dimen/x18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#ffb900"
+        android:textSize="@dimen/x16"
+        tools:text="日常学习计划"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_schedule_name"
+        android:id="@+id/tv_schedule_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="2012-5-8"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_schedule_type"
+        android:id="@+id/tv_star_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginBottom="@dimen/y10"
+        tools:text="2012-5-8"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_star_time"
+        android:id="@+id/tv_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#f00"
+        android:id="@+id/tv_schedule_status"
+        android:textSize="@dimen/x14"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:text="未开始"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

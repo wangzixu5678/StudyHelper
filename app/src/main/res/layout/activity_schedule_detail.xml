@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <include layout="@layout/common_title"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_sel_scheduletype"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="计划类型:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_scheduletype"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="点击请选择计划类型"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:minHeight="@dimen/y60"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="计划名称:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_schedulename"
+                    style="@style/common_edit_nosingle_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请输入计划名称"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+            <View style="@style/lineH1" />
+            <LinearLayout
+                android:id="@+id/ll_sel_startime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="开始时间:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_star_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:hint="点击选择开始时间"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+
+            <LinearLayout
+                android:id="@+id/ll_sel_endtime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="结束时间:"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:hint="点击选择结束时间"
+                    android:textColor="#000"
+                    android:textSize="@dimen/x16" />
+            </LinearLayout>
+
+            <View style="@style/lineH1" />
+            <RadioGroup
+                android:layout_marginTop="@dimen/y30"
+                android:id="@+id/rg"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rb_ready"
+                    android:text="准备中"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rb_ok"
+                    android:text="已完成"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rb_undate"
+                    android:text="已过期"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rb_laji"
+                    android:text="已废弃"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+            <Button
+                android:layout_marginBottom="@dimen/y10"
+                android:id="@+id/btn_change_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginTop="@dimen/y20"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_bg"
+                android:text="修改计划信息"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+
+            <Button
+                android:layout_marginBottom="@dimen/y160"
+                android:id="@+id/btn_delete_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@drawable/btn_red_bg"
+                android:text="删除计划"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

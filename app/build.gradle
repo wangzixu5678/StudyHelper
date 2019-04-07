@@ -76,21 +76,19 @@ dependencies {
     implementation ext.particleview
     implementation ext.swipeMenuLayout
     /**
-     * 网络框架 EaseHttp
-     * MVP 框架 XMVP
+     *  网络框架 EaseHttp
+     *  MVP 框架 XMVP
      */
     implementation project(':easeui')
     implementation ext.swipeMenuLayout
-
     implementation ext.greendao
-
     implementation ext.matisse
-
     implementation ext.photoview
-
     implementation ext.compressor
-
     implementation ext.pickview
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
+//    implementation ext.lottie
 }
 
 greendao {
