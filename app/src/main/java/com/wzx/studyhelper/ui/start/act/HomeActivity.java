@@ -18,6 +18,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.common.bean.TabEntity;
+import com.wzx.studyhelper.ui.compare.act.CompareActivity;
 import com.wzx.studyhelper.ui.diffcult.act.DifficultActivity;
 import com.wzx.studyhelper.ui.examination.act.ExaminationActivity;
 import com.wzx.studyhelper.ui.homework.fragment.HomeWorkFragment;
@@ -160,6 +161,8 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
                 break;
             case 3:
                 //对比功能
+                intent = new Intent(this,CompareActivity.class);
+                startActivity(intent);
                 break;
         }
 

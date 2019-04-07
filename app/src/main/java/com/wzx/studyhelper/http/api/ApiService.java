@@ -139,4 +139,20 @@ public interface ApiService {
      */
     @POST("/study/difficult/selectBySchedule")
     Observable<String> selectBySchedule(@Body JsonObject value);
+
+    /**
+     * 新增对比
+     */
+    @POST("/study/contrast/insertContrast")
+    Observable<String> insertContrast(@Body JsonObject value);
+    /**
+     * 修改对比
+     */
+    @POST("/study/contrast/updateContrast")
+    Observable<String> updateContrast(@Body JsonObject value);
+    /**
+     * 查询对比
+     */
+    @POST("/study/contrast/selectByContrast")
+    Observable<String> selectByContrast(@Body JsonObject value);
 }

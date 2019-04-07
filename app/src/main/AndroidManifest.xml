@@ -50,7 +50,7 @@
             android:launchMode="singleTask" />
         <activity android:name=".ui.start.act.LoginActivity" />
         <activity android:name=".ui.start.act.RegisterActivity" />
-        <activity android:name=".ui.start.act.SplashActivity" >
+        <activity android:name=".ui.start.act.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -96,11 +96,12 @@
         <activity android:name=".ui.examination.act.ExaminationDetailActivity" />
         <activity android:name=".ui.diffcult.act.DifficultActivity" />
         <activity android:name=".ui.diffcult.act.DiffcultDetailActivity" />
-        <activity android:name=".common.ui.TestActivity">
-
-        </activity>
+        <activity android:name=".common.ui.TestActivity" />
         <activity android:name=".ui.schedule.act.ScheduleDetailActivity" />
-        <activity android:name=".ui.schedule.act.ScheduleActivity"></activity>
+        <activity android:name=".ui.schedule.act.ScheduleActivity" />
+        <activity android:name=".ui.compare.act.CompareDetailActivity" />
+        <activity android:name=".ui.compare.act.CompareActivity" />
+        <activity android:name=".ui.compare.act.SelectNoteActivity"></activity>
     </application>
 
 </manifest>

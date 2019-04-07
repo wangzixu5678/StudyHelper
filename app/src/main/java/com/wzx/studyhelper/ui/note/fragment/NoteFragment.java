@@ -21,6 +21,7 @@ import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
 import com.wzx.studyhelper.ui.note.act.NoteDetailActivity;
 import com.wzx.studyhelper.ui.note.adapter.NoteListAdapter;
+import com.wzx.studyhelper.ui.note.bean.NoteBean;
 import com.wzx.studyhelper.ui.note.bean.NoteListBean;
 import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
@@ -41,7 +42,7 @@ public class NoteFragment extends BaseFragment implements BaseQuickAdapter.OnIte
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerview;
     private NoteListAdapter mNoteListAdapter;
-    private ArrayList<NoteListBean.DataBean> mDatas;
+    private ArrayList<NoteBean> mDatas;
 
     public NoteFragment() {
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginRight="@dimen/x14"
+        android:id="@+id/tv_name"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginLeft="@dimen/x14"
+        tools:text="对比名称"
+        android:textColor="#000"
+        android:textSize="@dimen/x18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="2012-5-8"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_name"
+        android:id="@+id/tv_note1_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="2012-5-8"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_note1_name"
+        android:id="@+id/tv_note2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginBottom="@dimen/y10"
+        tools:text="2012-5-8"
+        android:layout_marginRight="@dimen/x14"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_below="@id/tv_note2_name"
+        android:id="@+id/tv_create_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

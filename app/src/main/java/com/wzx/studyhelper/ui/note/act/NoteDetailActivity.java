@@ -16,6 +16,7 @@ import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
+import com.wzx.studyhelper.ui.note.bean.NoteBean;
 import com.wzx.studyhelper.ui.note.bean.NoteListBean;
 import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.InputMethodManagerUtils;
@@ -63,7 +64,7 @@ public class NoteDetailActivity extends BaseActivity {
             "信息隐藏原理与技术",
             "中国近代史纲要",
             "线性代数"};
-    private NoteListBean.DataBean mDataBean;
+    private NoteBean mDataBean;
     private OptionsPickerView<String> mCoursePicker;
     private int mCourseNumber;
 

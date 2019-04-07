@@ -220,6 +220,7 @@ public class HttpManager extends RetrofitManager {
         });
     }
 
+    //计划表
     public void selectBySchedule(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
         Observable<String> observable = getApiService().selectBySchedule(jsonObject);
         toSubscribeStr(observable, new DialogObserver<String>(base,true) {
@@ -244,6 +245,37 @@ public class HttpManager extends RetrofitManager {
 
     public void updateSchedule(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
         Observable<String> observable = getApiService().updateSchedule(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    //对比功能
+    public void selectByContrast(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().selectByContrast(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    public void updateContrast(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().updateContrast(jsonObject);
+        toSubscribeStr(observable, new DialogObserver<String>(base,true) {
+            @Override
+            protected void onBaseNext(String data) {
+                responseCallback.onSuccess(data);
+            }
+        });
+    }
+
+    public void insertContrast(BaseImpl base,JsonObject jsonObject,final ResponseCallback<String> responseCallback){
+        Observable<String> observable = getApiService().insertContrast(jsonObject);
         toSubscribeStr(observable, new DialogObserver<String>(base,true) {
             @Override
             protected void onBaseNext(String data) {

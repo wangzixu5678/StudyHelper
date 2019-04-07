@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/x14"
+    android:layout_marginRight="@dimen/x14"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <TextView
+        android:textColor="#000"
+        android:layout_marginTop="@dimen/y10"
+        android:textSize="@dimen/x18"
+        android:layout_gravity="center_horizontal"
+        tools:text="笔记一"
+        android:id="@+id/tv_hint_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textColor="#000"
+        android:textSize="@dimen/x16"
+        android:id="@+id/tv_course_name"
+        android:text="课程名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#000"
+        android:layout_marginTop="@dimen/y4"
+        android:textSize="@dimen/x16"
+        android:id="@+id/tv_knowledge_name"
+        android:text="知识点名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#f00"
+        android:layout_marginTop="@dimen/y4"
+        android:textSize="@dimen/x16"
+        android:id="@+id/tv_knowledge_answer"
+        android:text="知识点答案名称"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#00f"
+        android:layout_marginTop="@dimen/y4"
+        android:textSize="@dimen/x16"
+        android:id="@+id/tv_note_mind"
+        android:text="个人心得"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

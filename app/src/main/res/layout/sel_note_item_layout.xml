@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y60"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="@dimen/x16"
+        android:layout_marginTop="@dimen/y3"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/cb"
+        tools:text="课程名称"
+        android:id="@+id/tv_course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/cb"
+        android:layout_marginBottom="@dimen/y3"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/x16"
+        tools:text="笔记名称"
+        android:id="@+id/tv_note_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
