@@ -8,7 +8,7 @@
     tools:context=".common.ui.TestActivity">
     <Button
         android:id="@+id/btn_mybtn"
-        android:clickable="false"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

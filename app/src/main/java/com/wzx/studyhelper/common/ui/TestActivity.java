@@ -39,26 +39,14 @@ public class TestActivity extends BaseActivity {
 
     @Override
     protected void initCircle() {
-
         mBtnGo = ((Button) findViewById(R.id.btn_mybtn));
 
-        mBtnGo.setOnTouchListener(new View.OnTouchListener() {
+        mBtnGo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Log.d("AAA", "onTouch: ACTION_DOWN");
-                        mIatDialog.show();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.d("AAA", "onTouch: ACTION_UP");
-                        mIatDialog.cancel();
-                        break;
-                }
-                return true;
+            public void onClick(View view) {
+                mIatDialog.show();
             }
         });
-
 
 
         mIatDialog = new RecognizerDialog(this, new InitListener() {
@@ -67,6 +55,7 @@ public class TestActivity extends BaseActivity {
 
             }
         });
+        mIatDialog.setCanceledOnTouchOutside(false);
         mIatDialog.setParameter(SpeechConstant.ACCENT, "mandarin");
         mIatDialog.setParameter( SpeechConstant.ENGINE_TYPE,"cloud");
         mIatDialog.setParameter(SpeechConstant.RESULT_TYPE, "plain");
@@ -92,7 +81,14 @@ public class TestActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if( null != mIatDialog ){
+            // 退出时释放连接
+            mIatDialog.cancel();
+            mIatDialog.destroy();
+        }
 
-
-
+    }
 }
