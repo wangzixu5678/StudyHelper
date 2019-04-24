@@ -34,8 +34,8 @@
                     android:textSize="@dimen/x16"
                     android:textStyle="bold" />
 
-                <TextView
-
+                <EditText
+                    style="@style/common_edit_single_style"
                     android:id="@+id/et_course_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -43,7 +43,7 @@
                     android:layout_marginLeft="@dimen/x14"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:hint="点击请选择课程名称"
+                    android:hint="请输入课程名称"
                     android:textColor="#000"
                     android:textSize="@dimen/x16" />
             </LinearLayout>

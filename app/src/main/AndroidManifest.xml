@@ -97,17 +97,21 @@
         <activity android:name=".ui.diffcult.act.DifficultActivity" />
         <activity android:name=".ui.diffcult.act.DiffcultDetailActivity" />
         <activity android:name=".common.ui.TestActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".ui.schedule.act.ScheduleDetailActivity" />
         <activity android:name=".ui.schedule.act.ScheduleActivity" />
         <activity android:name=".ui.compare.act.CompareDetailActivity" />
         <activity android:name=".ui.compare.act.CompareActivity" />
-        <activity android:name=".ui.compare.act.SelectNoteActivity"></activity>
+        <activity android:name=".ui.compare.act.SelectNoteActivity" />
+        <activity android:name=".ui.chat.act.MessageActivity" />
+        <activity android:name=".ui.chat.act.AddFriendsActivity"></activity>
     </application>
 
 </manifest>

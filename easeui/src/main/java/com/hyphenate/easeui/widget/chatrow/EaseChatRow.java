@@ -2,6 +2,7 @@ package com.hyphenate.easeui.widget.chatrow;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.Direct;
@@ -22,6 +24,7 @@ import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.easeui.widget.EaseChatMessageList;
 import com.hyphenate.easeui.widget.EaseChatMessageList.MessageListItemClickListener;
 import com.hyphenate.easeui.widget.EaseImageView;
+import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.DateUtils;
 
 import java.util.Date;
@@ -145,10 +148,18 @@ public abstract class EaseChatRow extends LinearLayout {
         if(userAvatarView != null) {
             //set nickname and avatar
             if (message.direct() == Direct.SEND) {
-                EaseUserUtils.setUserAvatar(context, EMClient.getInstance().getCurrentUser(), userAvatarView);
+                try {
+                    Glide.with(context).load(message.getStringAttribute("youricon")).placeholder(R.drawable.ease_default_avatar).into(userAvatarView);
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                }
             } else {
-                EaseUserUtils.setUserAvatar(context, message.getFrom(), userAvatarView);
-                EaseUserUtils.setUserNick(message.getFrom(), usernickView);
+                try {
+                    usernickView.setText(message.getStringAttribute("yourname"));
+                    Glide.with(context).load(message.getStringAttribute("youricon")).placeholder(R.drawable.ease_default_avatar).into(userAvatarView);
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                }
             }
         }
         if (EMClient.getInstance().getOptions().getRequireDeliveryAck()) {

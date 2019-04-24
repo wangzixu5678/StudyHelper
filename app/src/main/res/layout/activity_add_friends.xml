@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.chat.act.AddFriendsActivity">
+    <include layout="@layout/common_title"/>
+
+    <EditText
+        android:singleLine="true"
+        android:maxLength="11"
+        android:inputType="number"
+        android:id="@+id/et_friends_account"
+        android:paddingLeft="@dimen/x10"
+        android:gravity="center_vertical"
+        android:hint="请输入好友账号"
+        style="@style/common_edit_single_style"
+        android:textSize="@dimen/x16"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50" />
+    <View
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <EditText
+        android:textSize="@dimen/x16"
+        android:singleLine="true"
+        android:id="@+id/et_friends_reason"
+        android:paddingLeft="@dimen/x10"
+        android:gravity="center_vertical"
+        android:hint="请输入添加原因"
+        style="@style/common_edit_single_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50" />
+    <View
+        android:background="@color/linecolor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"/>
+    <Button
+        android:id="@+id/btn_add_friends"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_yellow_bg"
+        android:text="添加好友"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

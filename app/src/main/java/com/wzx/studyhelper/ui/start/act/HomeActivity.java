@@ -15,9 +15,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.hjq.toast.ToastUtils;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.common.bean.TabEntity;
+import com.wzx.studyhelper.ui.chat.act.MessageActivity;
 import com.wzx.studyhelper.ui.compare.act.CompareActivity;
 import com.wzx.studyhelper.ui.diffcult.act.DifficultActivity;
 import com.wzx.studyhelper.ui.examination.act.ExaminationActivity;
@@ -82,8 +84,9 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         mDatas.add( new LeftMenuBean(R.drawable.difficuteicon,"难点记录"));
         mDatas.add( new LeftMenuBean(R.drawable.scheduleicon,"我的计划"));
         mDatas.add( new LeftMenuBean(R.drawable.compareicon,"对比功能"));
+        mDatas.add(new LeftMenuBean(R.drawable.work_icon,"消息"));
         mDatas.add(new LeftMenuBean(R.drawable.verson_icon,"版本号 "+PhotoUtils.getAppVersionName(this)));
-        mDatas.add(new LeftMenuBean(R.drawable.work_icon,"作者 XXX"));
+
         mLeftMenuAdapter = new LeftMenuAdapter(mDatas);
         mLeftMenuAdapter.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -163,6 +166,15 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
                 //对比功能
                 intent = new Intent(this,CompareActivity.class);
                 startActivity(intent);
+                break;
+            case 4:
+                //即时通讯
+                intent = new Intent(this,MessageActivity.class);
+                startActivity(intent);
+                break;
+            case 5:
+                //版本号
+                ToastUtils.show("版本号 "+PhotoUtils.getAppVersionName(this));
                 break;
         }
 

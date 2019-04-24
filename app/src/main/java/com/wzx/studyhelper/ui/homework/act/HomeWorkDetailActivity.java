@@ -38,7 +38,7 @@ public class HomeWorkDetailActivity extends BaseActivity {
 
 
     @BindView(R.id.et_course_name)
-    TextView mTvCourseName;
+    TextView mEtCourseName;
     @BindView(R.id.et_work_name)
     EditText mEtWorkName;
     @BindView(R.id.tv_star_time)
@@ -100,7 +100,7 @@ public class HomeWorkDetailActivity extends BaseActivity {
             mTvStarTime.setText(DateUtils.getFormatTime2(mDataBean.getStartTimeDto()));
             mTvEndTime.setText(DateUtils.getFormatTime2(mDataBean.getEndTimeDto()));
             mEtWorkName.setText(mDataBean.getOperatioName());
-            mTvCourseName.setText(mDataBean.getCourseName());
+            mEtCourseName.setText(mDataBean.getCourseName());
             mBtnChangeWork.setText("修改作业内容");
             setBackTitle("编辑作业", null);
 
@@ -119,7 +119,7 @@ public class HomeWorkDetailActivity extends BaseActivity {
         mCoursePicker = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                mTvCourseName.setText(mCoureses[options1]);
+                mEtCourseName.setText(mCoureses[options1]);
                 mCourseNumber = options1 + 1;
             }
         }).setTitleText("请选择学期")
@@ -170,7 +170,7 @@ public class HomeWorkDetailActivity extends BaseActivity {
         JsonObject jsonObject = new JsonObject();
 
         jsonObject.addProperty("operatioName", mEtWorkName.getText().toString().trim());
-        jsonObject.addProperty("courseName", mTvCourseName.getText().toString().trim());
+        jsonObject.addProperty("courseName", mEtCourseName.getText().toString().trim());
         jsonObject.addProperty("courseId", String.valueOf(mCourseNumber));
         jsonObject.addProperty("startTimeDto", String.valueOf(mStarDate));
         jsonObject.addProperty("endTimeDto", String.valueOf(mEndDate));
@@ -220,7 +220,7 @@ public class HomeWorkDetailActivity extends BaseActivity {
                 mTimePickerView.show(view);
                 break;
             case R.id.btn_change_work:
-                if (mTvCourseName.length() == 0 || mEtWorkName.length() == 0 || mTvEndTime.length() == 0 || mTvStarTime.length() == 0) {
+                if (mEtCourseName.length() == 0 || mEtWorkName.length() == 0 || mTvEndTime.length() == 0 || mTvStarTime.length() == 0) {
                     ToastUtils.show("请完成填写内容");
                     return;
                 }
@@ -230,9 +230,9 @@ public class HomeWorkDetailActivity extends BaseActivity {
                 }
                 getDetailFromNet();
                 break;
-            case R.id.ll_sel_course:
-                mCoursePicker.show(view);
-                break;
+//            case R.id.ll_sel_course:
+//                mCoursePicker.show(view);
+//                break;
             case R.id.btn_delete_work:
                 deleteWork();
                 break;

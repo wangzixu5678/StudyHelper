@@ -94,6 +94,7 @@ public abstract class RetrofitManager {
 
 
 
+
     protected <T> void toSubscribeStr(Observable<String> o, Observer<String> s) {
         o.subscribeOn(Schedulers.io()).map(new Function<String, String>() {
             @Override

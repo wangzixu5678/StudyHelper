@@ -66,7 +66,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
             }
         }else {
             String message = e.getMessage();
-            onBaseError(ApiException.Code_Default, StringUtil.judgeString(message));
+            onBaseError(ApiException.Code_Default,StringUtil.judgeString(message));
             LogUtils.d(message);
         }
 

@@ -9,6 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.wzx.studyhelper.R;
 
+
 /**
  * Created by wzx on 2018/6/25.
  */
@@ -112,7 +113,7 @@ public class GlideDoMain {
                 .load(source)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .placeholder(Color.parseColor("#d8d8d8"))
+                .placeholder(R.drawable.avatar_default)
                 .transform(new GlideCircleTransform(context))
                 .into(imageView);
     }
@@ -123,7 +124,7 @@ public class GlideDoMain {
         }
         Glide.with(context)
                 .load(source)
-                .placeholder(Color.parseColor("#d8d8d8"))
+                .placeholder(R.drawable.avatar_default)
                 .transform(new GlideCircleTransform(context))
                 .into(imageView);
     }

@@ -1,12 +1,9 @@
 package com.wzx.studyhelper.ui.diffcult.act;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -15,20 +12,24 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.JsonObject;
 import com.hjq.toast.ToastUtils;
+import com.iflytek.cloud.InitListener;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
 import com.wzx.studyhelper.ui.diffcult.bean.DiffcultListBean;
 import com.wzx.studyhelper.utils.Constants;
-import com.wzx.studyhelper.utils.DateUtils;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.utils.StringUtil;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DiffcultDetailActivity extends BaseActivity {
@@ -41,8 +42,8 @@ public class DiffcultDetailActivity extends BaseActivity {
     Button mBtnChangeDiffcult;
     @BindView(R.id.btn_delete_diffcult)
     Button mBtnDeleteDiffcult;
-    @BindView(R.id.tv_course_name)
-    TextView mTvCourseName;
+    @BindView(R.id.et_course_name)
+    TextView mEtCourseName;
     @BindView(R.id.et_diffcult_name)
     TextView mTvDiffcultName;
     @BindView(R.id.rg)
@@ -72,6 +73,7 @@ public class DiffcultDetailActivity extends BaseActivity {
     private int mCourseNumber;
     private OptionsPickerView<String> mCoursePicker;
     private int mCurrentDealStatus;
+    private RecognizerDialog mIatDialog;
 
     @Override
     protected int getLayoutId() {
@@ -87,6 +89,7 @@ public class DiffcultDetailActivity extends BaseActivity {
     protected void initCircle() {
         initCoursePick();
         initUI();
+        initYuyin();
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -103,10 +106,42 @@ public class DiffcultDetailActivity extends BaseActivity {
     }
 
 
+
+    private void initYuyin() {
+        mIatDialog = new RecognizerDialog(this, new InitListener() {
+            @Override
+            public void onInit(int i) {
+
+            }
+        });
+        mIatDialog.setCanceledOnTouchOutside(false);
+        mIatDialog.setParameter(SpeechConstant.ACCENT, "mandarin");
+        mIatDialog.setParameter( SpeechConstant.ENGINE_TYPE,"cloud");
+        mIatDialog.setParameter(SpeechConstant.RESULT_TYPE, "plain");
+        mIatDialog.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+        mIatDialog.setParameter(SpeechConstant.VAD_BOS, "4000");
+        mIatDialog.setParameter(SpeechConstant.ASR_PTT,"1");
+        mIatDialog.setParameter(SpeechConstant.VAD_EOS, "1000");
+        mIatDialog.setListener(new RecognizerDialogListener() {
+            @Override
+            public void onResult(RecognizerResult recognizerResult, boolean b) {
+                mEtDiffcultAnswer.setText(mEtDiffcultAnswer.getText() + recognizerResult.getResultString());
+                mEtDiffcultAnswer.setSelection(mEtDiffcultAnswer.length());
+            }
+            @Override
+            public void onError(SpeechError speechError) {
+
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mIatDialog.create();
+        }
+    }
+
     private void initUI() {
         if (mDataBean != null) {
             mTvDiffcultName.setText(mDataBean.getDifficultName());
-            mTvCourseName.setText(mDataBean.getCourseName());
+            mEtCourseName.setText(mDataBean.getCourseName());
             mBtnChangeDiffcult.setText("修改难点信息");
             setBackTitle("编辑难点信息", null);
             mCourseNumber = mDataBean.getCourseId();
@@ -132,7 +167,7 @@ public class DiffcultDetailActivity extends BaseActivity {
         mCoursePicker = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                mTvCourseName.setText(mCoureses[options1]);
+                mEtCourseName.setText(mCoureses[options1]);
                 mCourseNumber = options1 + 1;
             }
         }).setTitleText("请选择学期")
@@ -140,11 +175,11 @@ public class DiffcultDetailActivity extends BaseActivity {
         mCoursePicker.setNPicker(Arrays.asList(mCoureses), null, null);
     }
 
-    @OnClick({R.id.btn_change_diffcult, R.id.btn_delete_diffcult,R.id.ll_sel_course})
+    @OnClick({R.id.btn_change_diffcult, R.id.btn_delete_diffcult,R.id.ll_sel_course,R.id.ll_voice_answer})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_change_diffcult:
-                if (StringUtil.isEmpty(mTvCourseName.getText().toString())||StringUtil.isEmpty(mTvDiffcultName.getText().toString())){
+                if (StringUtil.isEmpty(mEtCourseName.getText().toString())||StringUtil.isEmpty(mTvDiffcultName.getText().toString())){
                     ToastUtils.show("请填写必要信息");
                     return;
                 }
@@ -155,6 +190,9 @@ public class DiffcultDetailActivity extends BaseActivity {
                 break;
             case R.id.ll_sel_course:
                 mCoursePicker.show();
+                break;
+            case R.id.ll_voice_answer:
+                mIatDialog.show();
                 break;
         }
     }
@@ -175,7 +213,7 @@ public class DiffcultDetailActivity extends BaseActivity {
 
     private void postDetailToNet() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("courseName", mTvCourseName.getText().toString().trim());
+        jsonObject.addProperty("courseName", mEtCourseName.getText().toString().trim());
         jsonObject.addProperty("courseId", String.valueOf(mCourseNumber));
         jsonObject.addProperty("difficultName",mTvDiffcultName.getText().toString().trim());
         jsonObject.addProperty("difficultAnswers",mEtDiffcultAnswer.getText().toString().trim());

@@ -24,4 +24,12 @@ public class Constants {
 
     public static final String URL_KEY  = "urlkey";
 
+
+    public static final String HASREQUEST  = "hasrequest";
+
+    //关于环信
+    public static final String YOUNAME = "yourname";
+    public static final String YOUICON = "youricon";
+    public static final String OTHERNAME = "othername";
+    public static final String OTHERICON = "othericon";
 }

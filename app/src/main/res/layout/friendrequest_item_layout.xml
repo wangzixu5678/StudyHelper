@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <ImageView
+        android:layout_marginLeft="@dimen/x12"
+        android:id="@+id/img_icon"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x45"
+        android:layout_height="@dimen/x45"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/avatar_default" />
+    <TextView
+        android:textColor="#000"
+        android:layout_marginLeft="@dimen/x12"
+        tools:text="未设置"
+        android:layout_toRightOf="@id/img_icon"
+        android:layout_marginTop="16dp"
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_toLeftOf="@id/btn_refuse"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/x16"
+        android:text="同意"
+        android:background="@drawable/btn_yellow_bg"
+        android:id="@+id/btn_agree"
+        android:layout_width="65dp"
+        android:layout_height="30dp" />
+
+    <Button
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_marginRight="@dimen/x18"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/x16"
+        android:text="拒绝"
+        android:background="@drawable/btn_red_bg"
+        android:id="@+id/btn_refuse"
+        android:layout_width="65dp"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_status_hint"
+        tools:text="好友已添加"
+        android:layout_marginLeft="@dimen/x12"
+        android:layout_toRightOf="@id/tv_nickname"
+        android:layout_marginTop="16dp"
+        android:textColor="#999999"
+        android:textSize="@dimen/x14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="添加原因"
+        android:layout_alignLeft="@id/tv_nickname"
+        android:layout_below="@id/tv_nickname"
+        android:id="@+id/tv_reason"
+        android:textSize="@dimen/x12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

@@ -2,8 +2,6 @@ package com.wzx.studyhelper.db.impl;
 
 import android.util.Log;
 
-import com.wzx.studyhelper.db.auto.FriendsRequestDBDao;
-import com.wzx.studyhelper.db.auto.UserDBDao;
 import com.wzx.studyhelper.db.auto.UserIconDBDao;
 import com.wzx.studyhelper.db.bean.FriendsRequestDB;
 import com.wzx.studyhelper.db.bean.UserIconDB;
@@ -35,16 +33,25 @@ public class UserIconDaoManager {
     }
 
 
-    public UserIconDB queryByUserId(String userid) {
+
+
+    public UserIconDB queryByUserId(String phone) {
         return mUserIconDBDao
                 .queryBuilder()
-                .where(UserIconDBDao.Properties.UserId.eq(userid))
+                .where(UserIconDBDao.Properties.Phone.eq(phone))
                 .build()
                 .unique();
     }
 
-
-    public List<UserIconDB> queryAll() {
-        return mUserIconDBDao.loadAll();
+    public List<FriendsRequestDB> getMyFriendsRequest(String phone){
+       return mUserIconDBDao
+                .queryBuilder()
+                .where(UserIconDBDao.Properties.Phone.eq(phone))
+                .build()
+                .unique()
+                .getMFriendsRequestDBList();
     }
+
+
+
 }

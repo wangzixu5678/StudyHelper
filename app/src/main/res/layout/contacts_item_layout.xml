@@ -1,21 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/x65"
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
-    <ImageView
-        android:src="@drawable/avatar_default"
-        android:layout_marginLeft="@dimen/x14"
-        android:layout_gravity="center_vertical"
-        android:layout_width="@dimen/x50"
-        android:layout_height="@dimen/x50" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentView="@+id/ll_content"
+    app:rightMenuView="@+id/right"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x65"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="@dimen/x50"
+            android:layout_height="@dimen/x50"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x14"
+            android:src="@drawable/avatar_default" />
 
-    <TextView
-        android:layout_marginLeft="@dimen/x20"
-        android:layout_gravity="center_vertical"
-        tools:text="王小明"
-        style="@style/text_16_000000"
+        <TextView
+            android:id="@+id/img_nickname"
+            style="@style/text_16_000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x20"
+            tools:text="王小明" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/right"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#FF3A3A"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:padding="20dp"
+            android:text="删除" />
+    </LinearLayout>
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

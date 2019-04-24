@@ -47,7 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
 
     private Unbinder unbinder;
     protected SmartRefreshLayout mRefreshLayout;
-    private RecyclerView mRecyclerView;
     protected int mCurrentPager = 1;
     protected static final int PAGERSIZE = 10;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
@@ -88,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
     }
 
     protected View getEmptyView(){
-       return LayoutInflater.from(this).inflate(R.layout.empty_view_layout, null);
+       return LayoutInflater.from(this).inflate(R.layout.empty_layout, null);
     }
 
 
@@ -108,7 +107,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseImpl
          * 初始化一些常用控件 无需构建重复代码(前提只要你在xml布局文件中有 那么就会省略很多代码)
          * initTitle 初始化标题栏
          * initRefresh 初始化下拉刷新监听
-         * initRv初始化RecyclerView
          */
         initTitle();
         initRefresh();

@@ -31,12 +31,23 @@
             android:textSize="@dimen/x18"
             android:textStyle="bold"
             tools:text="笨蛋小灰猪" />
-
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nickname"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y10"
+            android:layout_marginBottom="@dimen/y10"
+            android:textColor="#000"
+            android:textSize="@dimen/x18"
+            android:textStyle="bold"
+            tools:text="18110591919" />
         <Button
             android:id="@+id/btn_change_icon"
             android:layout_width="@dimen/x80"
             android:layout_height="@dimen/y40"
-            android:layout_below="@id/tv_nickname"
+            android:layout_below="@id/tv_phone"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_bg"
             android:text="更换头像"

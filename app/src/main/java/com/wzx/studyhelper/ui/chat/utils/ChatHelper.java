@@ -1,12 +1,18 @@
 package com.wzx.studyhelper.ui.chat.utils;
 
+import android.util.Log;
+
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.domain.EaseUser;
+import com.wzx.studyhelper.common.bus.FriendsRequestBus;
 import com.wzx.studyhelper.db.bean.FriendsRequestDB;
 import com.wzx.studyhelper.db.impl.FriendsRequestDaoManager;
 import com.wzx.studyhelper.utils.Constants;
+import com.wzx.studyhelper.utils.SharedPreferencesUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class ChatHelper implements EMConnectionListener, EMContactListener {
 
@@ -58,36 +64,19 @@ public class ChatHelper implements EMConnectionListener, EMContactListener {
         EaseUser easeUser = new EaseUser(username);
         FriendsRequestDB friendsRequestDB = new FriendsRequestDB();
         friendsRequestDB.setNickname(easeUser.getNickname());
-        friendsRequestDB.setReason("");
+        friendsRequestDB.setReason(reason);
         friendsRequestDB.setStatus(Constants.WAITING_FRIEND);
         friendsRequestDB.setUsericon(easeUser.getAvatar());
         friendsRequestDB.setUsername(username);
         FriendsRequestDaoManager.getInstance().update(friendsRequestDB);
+        SharedPreferencesUtil.getInstance().putBoolean(Constants.HASREQUEST,true);
     }
 
     @Override
     public void onFriendRequestAccepted(String username) {
-        //好友请求被同意
-        EaseUser easeUser = new EaseUser(username);
-        FriendsRequestDB friendsRequestDB = new FriendsRequestDB();
-        friendsRequestDB.setNickname(easeUser.getNickname());
-        friendsRequestDB.setReason("");
-        friendsRequestDB.setStatus(Constants.ALREADY_FRIEND);
-        friendsRequestDB.setUsericon(easeUser.getAvatar());
-        friendsRequestDB.setUsername(username);
-        FriendsRequestDaoManager.getInstance().update(friendsRequestDB);
     }
 
     @Override
     public void onFriendRequestDeclined(String username) {
-        //好友请求被拒绝
-        EaseUser easeUser = new EaseUser(username);
-        FriendsRequestDB friendsRequestDB = new FriendsRequestDB();
-        friendsRequestDB.setNickname(easeUser.getNickname());
-        friendsRequestDB.setReason("");
-        friendsRequestDB.setStatus(Constants.REFUSE_FRIEND);
-        friendsRequestDB.setUsericon(easeUser.getAvatar());
-        friendsRequestDB.setUsername(username);
-        FriendsRequestDaoManager.getInstance().update(friendsRequestDB);
     }
 }

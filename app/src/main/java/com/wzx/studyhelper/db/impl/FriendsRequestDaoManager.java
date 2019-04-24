@@ -3,9 +3,7 @@ package com.wzx.studyhelper.db.impl;
 import android.util.Log;
 
 import com.wzx.studyhelper.db.auto.FriendsRequestDBDao;
-import com.wzx.studyhelper.db.auto.UserDBDao;
 import com.wzx.studyhelper.db.bean.FriendsRequestDB;
-import com.wzx.studyhelper.db.bean.UserDB;
 import com.wzx.studyhelper.db.imp.IDao;
 import com.wzx.studyhelper.db.utils.DaoManager;
 
@@ -36,13 +34,18 @@ public class FriendsRequestDaoManager implements IDao<FriendsRequestDB> {
             Log.e("lxq", "删除失败");
             return false;
         }
+
         return true;
+    }
+
+    public void deleteAll(){
+        mFriendsRequestDBDao.deleteAll();
     }
 
     @Override
     public boolean update(FriendsRequestDB friendsRequestD) {
         try {
-            mFriendsRequestDBDao.update(friendsRequestD);
+            mFriendsRequestDBDao.insertOrReplace(friendsRequestD);
         } catch (Exception e) {
             Log.e("lxq", "更新失败");
             return false;

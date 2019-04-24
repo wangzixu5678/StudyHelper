@@ -8,5 +8,5 @@ public class NetAddressConstants {
 
 
 
-    public static final String BASEURL = "http://mgpw2a.natappfree.cc";
+    public static final String BASEURL = "http://mxynb.natapp1.cc";
 }

@@ -1,7 +1,7 @@
 package com.wzx.studyhelper.ui.note.act;
 
 
-import android.os.Bundle;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,12 +12,17 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.JsonObject;
 import com.hjq.toast.ToastUtils;
+import com.iflytek.cloud.InitListener;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
 import com.wzx.studyhelper.ui.note.bean.NoteBean;
-import com.wzx.studyhelper.ui.note.bean.NoteListBean;
 import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.InputMethodManagerUtils;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
@@ -25,7 +30,6 @@ import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import java.util.Arrays;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class NoteDetailActivity extends BaseActivity {
@@ -37,8 +41,8 @@ public class NoteDetailActivity extends BaseActivity {
     EditText mEtKnowledgAnswer;
     @BindView(R.id.et_my_mind)
     EditText mEtMyMind;
-    @BindView(R.id.tv_course_name)
-    TextView mTvCourseName;
+    @BindView(R.id.et_course_name)
+    TextView mEtCourseName;
     @BindView(R.id.btn_change_work)
     Button mBtnChangeWork;
     @BindView(R.id.btn_delete_note)
@@ -67,6 +71,8 @@ public class NoteDetailActivity extends BaseActivity {
     private NoteBean mDataBean;
     private OptionsPickerView<String> mCoursePicker;
     private int mCourseNumber;
+    private RecognizerDialog mIatDialog;
+    private int mCurrentVocice;
 
     @Override
     protected int getLayoutId() {
@@ -82,7 +88,44 @@ public class NoteDetailActivity extends BaseActivity {
     protected void initCircle() {
         initUI();
         initCoursePick();
+        initYuyin();
         getDateFromNet();
+    }
+
+    private void initYuyin() {
+        mIatDialog = new RecognizerDialog(this, new InitListener() {
+            @Override
+            public void onInit(int i) {
+
+            }
+        });
+        mIatDialog.setCanceledOnTouchOutside(false);
+        mIatDialog.setParameter(SpeechConstant.ACCENT, "mandarin");
+        mIatDialog.setParameter( SpeechConstant.ENGINE_TYPE,"cloud");
+        mIatDialog.setParameter(SpeechConstant.RESULT_TYPE, "plain");
+        mIatDialog.setParameter(SpeechConstant.LANGUAGE, "zh_cn");
+        mIatDialog.setParameter(SpeechConstant.VAD_BOS, "4000");
+        mIatDialog.setParameter(SpeechConstant.ASR_PTT,"1");
+        mIatDialog.setParameter(SpeechConstant.VAD_EOS, "1000");
+        mIatDialog.setListener(new RecognizerDialogListener() {
+            @Override
+            public void onResult(RecognizerResult recognizerResult, boolean b) {
+                if (mCurrentVocice ==1) {
+                    mEtKnowledgAnswer.setText(mEtKnowledgAnswer.getText() + recognizerResult.getResultString());
+                    mEtKnowledgAnswer.setSelection(mEtKnowledgAnswer.length());
+                }else if (mCurrentVocice == 2){
+                    mEtMyMind.setText(mEtMyMind.getText() + recognizerResult.getResultString());
+                    mEtMyMind.setSelection(mEtMyMind.length());
+                }
+            }
+            @Override
+            public void onError(SpeechError speechError) {
+
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mIatDialog.create();
+        }
     }
 
     private void initUI() {
@@ -91,7 +134,7 @@ public class NoteDetailActivity extends BaseActivity {
             mBtnChangeWork.setText("修改笔记内容");
             mEtKnowledgename.setText(mDataBean.getKnowledgeName());
             mEtKnowledgAnswer.setText(mDataBean.getKnowledgeAnswer());
-            mTvCourseName.setText(mDataBean.getCourseName());
+            mEtCourseName.setText(mDataBean.getCourseName());
             mEtMyMind.setText(mDataBean.getPersonalExperience());
             mBtnDeleteNote.setVisibility(View.VISIBLE);
         } else {
@@ -110,7 +153,7 @@ public class NoteDetailActivity extends BaseActivity {
         mCoursePicker = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                mTvCourseName.setText(mCoureses[options1]);
+                mEtCourseName.setText(mCoureses[options1]);
                 mCourseNumber = options1 + 1;
             }
         }).setTitleText("请选择学期")
@@ -118,19 +161,19 @@ public class NoteDetailActivity extends BaseActivity {
         mCoursePicker.setNPicker(Arrays.asList(mCoureses), null, null);
     }
 
-    @OnClick({R.id.ll_sel_course, R.id.btn_change_work, R.id.btn_delete_note})
+    @OnClick({R.id.ll_sel_course, R.id.btn_change_work, R.id.btn_delete_note,R.id.ll_voice_answer,R.id.ll_voice_mind})
     public void onViewClicked(View view) {
         InputMethodManagerUtils.hideSoftInput(this,view);
         switch (view.getId()) {
-            case R.id.ll_sel_course:
-                mCoursePicker.show();
-                break;
+//            case R.id.ll_sel_course:
+//                mCoursePicker.show();
+//                break;
             case R.id.btn_change_work:
                 if (mDataBean==null){
                     JsonObject jsonObject = new JsonObject();
                     jsonObject.addProperty("userId",SharedPreferencesUtil.getInstance().getString(Constants.USER_ID));
                     jsonObject.addProperty("courseId",mCourseNumber);
-                    jsonObject.addProperty("courseName",mTvCourseName.getText().toString().trim());
+                    jsonObject.addProperty("courseName", mEtCourseName.getText().toString().trim());
                     jsonObject.addProperty("knowledgeName",mEtKnowledgename.getText().toString().trim());
                     jsonObject.addProperty("knowledgeAnswer",mEtKnowledgAnswer.getText().toString().trim());
                     jsonObject.addProperty("personalExperience",mEtMyMind.getText().toString().trim());
@@ -144,7 +187,7 @@ public class NoteDetailActivity extends BaseActivity {
                 }else {
                     JsonObject jsonObject = new JsonObject();
                     jsonObject.addProperty("id",mDataBean.getId());
-                    jsonObject.addProperty("courseName",mTvCourseName.getText().toString().trim());
+                    jsonObject.addProperty("courseName", mEtCourseName.getText().toString().trim());
                     jsonObject.addProperty("userId",SharedPreferencesUtil.getInstance().getString(Constants.USER_ID));
                     jsonObject.addProperty("courseId",mCourseNumber);
                     jsonObject.addProperty("knowledgeName",mEtKnowledgename.getText().toString().trim());
@@ -173,6 +216,24 @@ public class NoteDetailActivity extends BaseActivity {
                     }
                 });
                 break;
+            case R.id.ll_voice_answer:
+                mCurrentVocice =1;
+                mIatDialog.show();
+                break;
+            case R.id.ll_voice_mind:
+                mCurrentVocice =2;
+                mIatDialog.show();
+                break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if( null != mIatDialog ){
+            // 退出时释放连接
+            mIatDialog.cancel();
+            mIatDialog.destroy();
         }
     }
 }

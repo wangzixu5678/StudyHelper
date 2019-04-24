@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y77"
+    android:layout_height="@dimen/y70"
     xmlns:tools="http://schemas.android.com/tools">
     <com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <ImageView
+                android:src="@drawable/avatar_default"
                 android:id="@+id/img_icon"
                 android:layout_width="@dimen/x45"
                 android:layout_height="@dimen/x45"
@@ -71,15 +72,6 @@
             android:layout_height="match_parent"
             android:background="@android:color/holo_red_light"
             android:orientation="horizontal">
-            <TextView
-                android:textColor="#ffffff"
-                android:id="@+id/tv_Settop"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:gravity="center"
-                android:padding="20dp"
-                android:text="置顶" />
             <TextView
                 android:id="@+id/tv_delete"
                 android:layout_width="wrap_content"

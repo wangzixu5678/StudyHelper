@@ -8,7 +8,10 @@ import android.widget.EditText;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.hjq.toast.ToastUtils;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 import com.wzx.studyhelper.R;
+import com.wzx.studyhelper.base.App;
 import com.wzx.studyhelper.base.BaseActivity;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
@@ -16,6 +19,7 @@ import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.InputMethodManagerUtils;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.utils.StringUtil;
+import com.wzx.studyhelper.utils.ThreadPoolManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -74,14 +78,43 @@ public class RegisterActivity extends BaseActivity implements TextWatcher {
                     new ResponseCallback<String>() {
                         @Override
                         public void onSuccess(String s) {
+                            iMRegister();
+                        }
+                        
+                    });
+        } else {
+            ToastUtils.show("两次密码不一致，请检查后提交。");
+        }
+    }
+
+    private void iMRegister() {
+        //环信注册
+        ThreadPoolManager.getInstance().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    EMClient.getInstance().createAccount(mEtPhone.getText().toString(),mEtPassword.getText().toString());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
                             SharedPreferencesUtil.getInstance().putString(Constants.USER_PHONE,mEtPhone.getText().toString().trim());
                             ToastUtils.show("恭喜您，注册成功!");
                             finish();
                         }
                     });
-        } else {
-            ToastUtils.show("两次密码不一致，请检查后提交。");
-        }
+                } catch (HyphenateException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SharedPreferencesUtil.getInstance().putString(Constants.USER_PHONE,mEtPhone.getText().toString().trim());
+                            ToastUtils.show("恭喜您，注册成功!");
+                            finish();
+                        }
+                    });
+                }
+            }
+        });
+
     }
 
     @Override

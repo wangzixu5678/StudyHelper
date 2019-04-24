@@ -111,7 +111,6 @@ public class CourseTabFragment extends BaseFragment implements BaseQuickAdapter.
             getDataFromServer();
             isRequestRefresh = false;
         }
-
     }
 
     private void getDataFromServer() {

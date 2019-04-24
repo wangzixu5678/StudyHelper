@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/rl_content_apply_friends"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y76">
+        android:layout_height="@dimen/y56">
 
         <ImageView
             android:id="@+id/img_icon"
@@ -15,7 +15,7 @@
             android:layout_height="@dimen/y40"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x14"
-            android:background="@drawable/addfriends" />
+            android:background="@drawable/friendsapply" />
 
         <TextView
             android:visibility="gone"
@@ -23,7 +23,7 @@
             android:layout_width="8dp"
             android:layout_height="8dp"
             android:layout_marginLeft="@dimen/x49"
-            android:layout_marginTop="@dimen/y16"
+            android:layout_marginTop="@dimen/y8"
             android:background="@drawable/circle_red_bg"
             android:padding="2dp"
             />
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x26"
+            android:layout_marginLeft="@dimen/x16"
             android:layout_toRightOf="@+id/img_icon"
             android:text="好友申请" />
 
@@ -43,7 +43,34 @@
             android:layout_alignParentBottom="true"
             android:background="@color/linecolor" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_content_addfriends"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y56">
 
+        <ImageView
+            android:id="@+id/img_icon2"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x14"
+            android:background="@drawable/addfriends" />
+
+        <TextView
+            style="@style/text_16_000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_toRightOf="@+id/img_icon2"
+            android:text="添加好友" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/linecolor" />
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

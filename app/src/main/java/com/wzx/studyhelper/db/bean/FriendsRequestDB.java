@@ -14,14 +14,17 @@ public class FriendsRequestDB {
     private String usericon;
     private String reason;
     @NotNull
+    private String masterId;
+    @NotNull
     private int status;
-    @Generated(hash = 1972685984)
+    @Generated(hash = 1352113134)
     public FriendsRequestDB(String username, String nickname, String usericon,
-            String reason, int status) {
+            String reason, @NotNull String masterId, int status) {
         this.username = username;
         this.nickname = nickname;
         this.usericon = usericon;
         this.reason = reason;
+        this.masterId = masterId;
         this.status = status;
     }
     @Generated(hash = 1178192543)
@@ -32,18 +35,6 @@ public class FriendsRequestDB {
     }
     public void setUsername(String username) {
         this.username = username;
-    }
-    public String getReason() {
-        return this.reason;
-    }
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-    public int getStatus() {
-        return this.status;
-    }
-    public void setStatus(int status) {
-        this.status = status;
     }
     public String getNickname() {
         return this.nickname;
@@ -56,6 +47,24 @@ public class FriendsRequestDB {
     }
     public void setUsericon(String usericon) {
         this.usericon = usericon;
+    }
+    public String getReason() {
+        return this.reason;
+    }
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+    public String getMasterId() {
+        return this.masterId;
+    }
+    public void setMasterId(String masterId) {
+        this.masterId = masterId;
+    }
+    public int getStatus() {
+        return this.status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 

@@ -22,7 +22,7 @@
                 android:id="@+id/ll_sel_course"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y60"
-                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginLeft="@dimen/x11"
                 android:layout_marginRight="@dimen/x14"
                 android:orientation="horizontal">
 
@@ -35,15 +35,16 @@
                     android:textSize="@dimen/x16"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_course_name"
+                <EditText
+                    style="@style/common_edit_single_style"
+                    android:id="@+id/et_course_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/x14"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:hint="点击请选择课程名称"
+                    android:hint="请输入课程名称"
                     android:textColor="#000"
                     android:textSize="@dimen/x16" />
             </LinearLayout>
@@ -112,7 +113,6 @@
                     android:textColor="#f00"
                     android:textSize="@dimen/x14"
                     android:layout_marginTop="@dimen/y4"
-                    android:layout_marginBottom="@dimen/y10"
                     android:layout_marginRight="@dimen/x14"
                     android:layout_below="@id/tv_answer"
                     android:hint="请填写知识点答案"
@@ -120,7 +120,25 @@
                     android:minHeight="@dimen/y120"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/ll_voice_answer"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/et_knowledg_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/x50"
+                    >
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:text="点击此按钮输入语音"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
+                </LinearLayout>
             </RelativeLayout>
 
             <View style="@style/lineH1" />
@@ -160,6 +178,25 @@
                     android:minHeight="@dimen/y120"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/ll_voice_mind"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/et_my_mind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/x50"
+                    >
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@drawable/voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:text="点击此按钮输入语音"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
             </RelativeLayout>
 
             <View style="@style/lineH1" />

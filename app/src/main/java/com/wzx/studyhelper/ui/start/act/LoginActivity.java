@@ -12,6 +12,8 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.wzx.studyhelper.R;
 import com.wzx.studyhelper.base.BaseActivity;
+import com.wzx.studyhelper.db.bean.UserIconDB;
+import com.wzx.studyhelper.db.impl.UserIconDaoManager;
 import com.wzx.studyhelper.http.HttpManager;
 import com.wzx.studyhelper.http.ResponseCallback;
 import com.wzx.studyhelper.ui.start.bean.LoginResultBean;
@@ -64,13 +66,21 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
                 break;
             case R.id.btn_login:
                 InputMethodManagerUtils.hideSoftInput(this,view);
-                HttpManager.getInstance().login(this, StringUtil.judgeString(mEtPhone.getText().toString()), mEtPassword.getText().toString(), new ResponseCallback<LoginResultBean>() {
+                HttpManager.getInstance().login(this, StringUtil.judgeString(mEtPhone.getText().toString()),mEtPassword.getText().toString(), new ResponseCallback<LoginResultBean>() {
                     @Override
                     public void onSuccess(LoginResultBean loginResultBean) {
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_PHONE,loginResultBean.getMobile());
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_ID,loginResultBean.getId());
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_NAME,loginResultBean.getNickname());
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_PASSWORD,loginResultBean.getPassword());
+
+
+                        UserIconDB userIconDB = new UserIconDB();
+                        userIconDB.setPhone(loginResultBean.getMobile());
+                        userIconDB.setNickname(loginResultBean.getNickname());
+                        UserIconDaoManager.getInstance().insertOrReplace(userIconDB);
+
+
                         iMLogin();
                     }
                 });
@@ -115,6 +125,7 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
 
             @Override
             public void onError(int code, String message) {
+                Log.d("AAA", "onError: " + message);
                 ToastUtils.show("登录成功");
                 SkipUtils.goHomeAct(getContext());
                 finish();

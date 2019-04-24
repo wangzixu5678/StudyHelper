@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
 import com.hjq.toast.ToastUtils;
+import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseUI;
 import com.iflytek.cloud.SpeechConstant;
@@ -23,11 +24,16 @@ import com.wzx.studyhelper.db.utils.DaoManager;
 import com.wzx.studyhelper.ui.chat.utils.ChatHelper;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by hdxy on 2018/11/30.
  */
 public class App extends Application {
     public static Context mContext;
+
+
     static {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @NonNull
@@ -56,9 +62,10 @@ public class App extends Application {
         initEaseUI();
         initXunFei();
         initGreenDao();
-
-
     }
+
+
+
 
     private void initXunFei() {
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5ca44f7c");
@@ -74,6 +81,7 @@ public class App extends Application {
         options.setAcceptInvitationAlways(false);
         options.setAutoLogin(true);
         EaseUI.getInstance().init(this,options);
+        EMClient.getInstance().setDebugMode(true);
         ChatHelper.getInstance().init();
     }
 
