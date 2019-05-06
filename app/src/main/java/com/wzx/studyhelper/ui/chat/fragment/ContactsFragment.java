@@ -73,7 +73,14 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
         getDataFromService();
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isRequestRefresh){
+            getDataFromService();
+            isRequestRefresh = false;
+        }
+    }
 
     private void initUI() {
         if (SharedPreferencesUtil.getInstance().getBoolean(Constants.HASREQUEST,false)) {
@@ -89,6 +96,7 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
             @Override
             public void run() {
                 try {
+                    mDatas.clear();
                     List<String> allContactsFromServer = EMClient.getInstance().contactManager().getAllContactsFromServer();
                     for (String name : allContactsFromServer) {
                         EaseUser easeUser = new EaseUser(name);
@@ -124,8 +132,9 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
     @OnClick({R.id.rl_content_apply_friends,R.id.rl_content_addfriends})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            //点击好友申请
+               //点击好友申请
             case R.id.rl_content_apply_friends:
+                isRequestRefresh = true;
                 mTvRedPoint.setVisibility(View.GONE);
                 SharedPreferencesUtil.getInstance().putBoolean(Constants.HASREQUEST,false);
                 Intent intent = new Intent(getContext(),FriendRequestActivity.class);
@@ -174,12 +183,13 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
                         }).show();
                 break;
             case R.id.ll_content:
-
                 UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
-
                 UserIconDB userIconDB2 = UserIconDaoManager.getInstance().queryByUserId(mDatas.get(position).getUsername());
-
-                SkipUtils.goChat(getContext(),mDatas.get(position).getUsername(),userIconDB.getNickname(),userIconDB.getUserIcon(),userIconDB2.getNickname(),userIconDB2.getUserIcon());
+                if (userIconDB2==null){
+                    SkipUtils.goChat(getContext(),mDatas.get(position).getUsername(),userIconDB.getNickname(),userIconDB.getUserIcon(),mDatas.get(position).getUsername(),"");
+                }else {
+                    SkipUtils.goChat(getContext(),mDatas.get(position).getUsername(),userIconDB.getNickname(),userIconDB.getUserIcon(),userIconDB2.getNickname(),userIconDB2.getUserIcon());
+                }
                 break;
         }
     }

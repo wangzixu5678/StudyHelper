@@ -33,6 +33,7 @@ import com.wzx.studyhelper.ui.start.bean.LeftMenuBean;
 import com.wzx.studyhelper.ui.start.fragment.UserFragment;
 import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.PhotoUtils;
+import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.widget.NoScrollViewPager;
 import com.zhihu.matisse.Matisse;
 
@@ -168,7 +169,9 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
                 startActivity(intent);
                 break;
             case 4:
-                //即时通讯
+                //即时通讯 消息
+                SharedPreferencesUtil.getInstance().putBoolean(Constants.HASHOMEREQUEST,false);
+                mLeftMenuAdapter.notifyDataSetChanged();
                 intent = new Intent(this,MessageActivity.class);
                 startActivity(intent);
                 break;
@@ -194,5 +197,9 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         } else {
             this.finish();
         }
+    }
+
+    public void notifyDrawerContent() {
+        mLeftMenuAdapter.notifyDataSetChanged();
     }
 }

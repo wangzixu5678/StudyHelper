@@ -102,7 +102,6 @@ public class ConversationFragment extends BaseFragment implements EMConnectionLi
 
     @Override
     public void onDisconnected(int i) {
-        Log.d("AAA", "onDisconnected: " + i);
         mLlNetStatus.setVisibility(View.VISIBLE);
     }
 
@@ -119,11 +118,19 @@ public class ConversationFragment extends BaseFragment implements EMConnectionLi
                 isRequestRefresh = true;
                 UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
                 UserIconDB userIconDB2 = UserIconDaoManager.getInstance().queryByUserId(mDatas.get(position).conversationId());
-                SkipUtils.goChat(getContext(),mDatas.get(position).conversationId(),
-                        userIconDB.getNickname(),
-                        userIconDB.getUserIcon(),
-                        userIconDB2.getNickname(),
-                        userIconDB2.getUserIcon());
+                if (userIconDB2==null){
+                    SkipUtils.goChat(getContext(),mDatas.get(position).conversationId(),
+                            userIconDB.getNickname(),
+                            userIconDB.getUserIcon(),
+                            mDatas.get(position).conversationId(),
+                            "");
+                }else {
+                    SkipUtils.goChat(getContext(),mDatas.get(position).conversationId(),
+                            userIconDB.getNickname(),
+                            userIconDB.getUserIcon(),
+                            userIconDB2.getNickname(),
+                            userIconDB2.getUserIcon());
+                }
                 break;
         }
     }

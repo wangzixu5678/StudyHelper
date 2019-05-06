@@ -10,6 +10,17 @@
         android:src="@drawable/examicon"
         android:layout_width="@dimen/x38"
         android:layout_height="@dimen/x38" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_red_point"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="@dimen/y8"
+        android:background="@drawable/circle_red_bg"
+        android:padding="2dp"
+        />
+
     <TextView
         android:id="@+id/tv_title"
         android:textStyle="bold"

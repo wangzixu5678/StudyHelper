@@ -38,8 +38,6 @@ public class ConversationAdapter extends BaseQuickAdapter<EMConversation,BaseVie
 
         String timestampString = DateUtils.getTimestampString(new Date(item.getLastMessage().getMsgTime()));
         helper.setText(R.id.tv_time,timestampString);
-
-
         ImageView imgIcon = (ImageView) helper.getView(R.id.img_icon);
         if (item.getLastMessage().direct() == EMMessage.Direct.SEND){
             /**

@@ -26,7 +26,7 @@ public class Constants {
 
 
     public static final String HASREQUEST  = "hasrequest";
-
+    public static final String HASHOMEREQUEST  = "hashomerequest";
     //关于环信
     public static final String YOUNAME = "yourname";
     public static final String YOUICON = "youricon";
