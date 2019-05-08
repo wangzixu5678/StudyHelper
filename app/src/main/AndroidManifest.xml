@@ -37,6 +37,8 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:name=".base.App"
         android:allowBackup="true"
@@ -45,6 +47,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity" />
+        <activity android:name="com.hyphenate.easeui.ui.EaseBaseActivity" />
+        <activity android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity" />
         <activity
             android:name=".ui.start.act.HomeActivity"
             android:launchMode="singleTask" />
@@ -112,6 +117,14 @@
         <activity android:name=".ui.compare.act.SelectNoteActivity" />
         <activity android:name=".ui.chat.act.MessageActivity" />
         <activity android:name=".ui.chat.act.AddFriendsActivity"></activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="3ecea51f560650b1ed8a4b99808f52e8" />
     </application>
 
 </manifest>

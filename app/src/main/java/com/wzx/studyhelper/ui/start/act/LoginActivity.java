@@ -74,13 +74,13 @@ public class LoginActivity extends BaseActivity implements TextWatcher {
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_NAME,loginResultBean.getNickname());
                         SharedPreferencesUtil.getInstance().putString(Constants.USER_PASSWORD,loginResultBean.getPassword());
 
-
-                        UserIconDB userIconDB = new UserIconDB();
+                        UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(loginResultBean.getMobile());
+                        if (userIconDB==null){
+                            userIconDB = new UserIconDB();
+                        }
                         userIconDB.setPhone(loginResultBean.getMobile());
                         userIconDB.setNickname(loginResultBean.getNickname());
                         UserIconDaoManager.getInstance().insertOrReplace(userIconDB);
-
-
                         iMLogin();
                     }
                 });

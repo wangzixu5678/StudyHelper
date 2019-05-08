@@ -107,7 +107,12 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
                         }
                         mDatas.add(easeUser);
                     }
-                    mContactsAdapter.notifyDataSetChanged();
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mContactsAdapter.notifyDataSetChanged();
+                        }
+                    });
                 } catch (HyphenateException e) {
                     e.printStackTrace();
                 }

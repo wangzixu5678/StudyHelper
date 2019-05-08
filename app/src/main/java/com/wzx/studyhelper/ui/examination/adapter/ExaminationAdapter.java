@@ -23,13 +23,13 @@ public class ExaminationAdapter extends BaseQuickAdapter<ExaminationListBean.Dat
         helper.setText(R.id.tv_end_time,"考试结束时间:" +DateUtils.getFormatTime2(item.getEndTimeDto()));
         if (item.getStartTimeDto()>System.currentTimeMillis()){
             helper.setText(R.id.tv_exam_status,"考试未开始");
-            helper.setTextColor(R.id.tv_exam_status,Color.RED);
+            helper.setTextColor(R.id.tv_exam_status,Color.GRAY);
         }else if (item.getStartTimeDto()<System.currentTimeMillis()&&item.getEndTimeDto()>System.currentTimeMillis()){
             helper.setText(R.id.tv_exam_status,"考试进行中");
             helper.setTextColor(R.id.tv_exam_status,Color.GREEN);
         }else {
             helper.setText(R.id.tv_exam_status,"考试已结束");
-            helper.setTextColor(R.id.tv_exam_status,Color.YELLOW);
+            helper.setTextColor(R.id.tv_exam_status,Color.RED);
         }
 
 
