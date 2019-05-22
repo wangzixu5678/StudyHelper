@@ -149,12 +149,10 @@ public class HomeWorkDetailActivity extends BaseActivity {
                 .build();
         Dialog mDialog = mTimePickerView.getDialog();
         if (mDialog != null) {
-
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     Gravity.BOTTOM);
-
             params.leftMargin = 0;
             params.rightMargin = 0;
             mTimePickerView.getDialogContainerLayout().setLayoutParams(params);
@@ -168,7 +166,6 @@ public class HomeWorkDetailActivity extends BaseActivity {
 
     private void getDetailFromNet() {
         JsonObject jsonObject = new JsonObject();
-
         jsonObject.addProperty("operatioName", mEtWorkName.getText().toString().trim());
         jsonObject.addProperty("courseName", mEtCourseName.getText().toString().trim());
         jsonObject.addProperty("courseId", String.valueOf(mCourseNumber));

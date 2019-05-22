@@ -21,7 +21,7 @@ public class CompareAdapter extends BaseQuickAdapter<CompareListBean.DataBean,Ba
     protected void convert(BaseViewHolder helper, CompareListBean.DataBean item) {
         helper.setText(R.id.tv_name,"对比名称:" + item.getContrastName());
         helper.setText(R.id.tv_note1_name,"笔记一名称:" + item.getNotes().get(0).getKnowledgeName());
-        helper.setText(R.id.tv_note1_name,"笔记二名称:" + item.getNotes().get(1).getKnowledgeName());
+        helper.setText(R.id.tv_note2_name,"笔记二名称:" + item.getNotes().get(1).getKnowledgeName());
         helper.setText(R.id.tv_create_time,"创建时间:" + item.getCreateTime());
     }
 }
