@@ -86,7 +86,7 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         mDatas.add( new LeftMenuBean(R.drawable.scheduleicon,"我的计划"));
         mDatas.add( new LeftMenuBean(R.drawable.compareicon,"对比功能"));
         mDatas.add(new LeftMenuBean(R.drawable.work_icon,"消息"));
-        mDatas.add(new LeftMenuBean(R.drawable.verson_icon,"版本号 "+PhotoUtils.getAppVersionName(this)));
+
 
         mLeftMenuAdapter = new LeftMenuAdapter(mDatas);
         mLeftMenuAdapter.setOnItemClickListener(this);
@@ -139,6 +139,8 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
         if (resultCode == getActivity().RESULT_OK) {
             if (requestCode == Constants.REQUEST_IMGSEL) {
                 mUserFragment.setImgIcon(Matisse.obtainPathResult(data).get(0));
+            }else if (requestCode == Constants.REQUEST_COVER){
+                mUserFragment.setCover(Matisse.obtainPathResult(data).get(0));
             }
         }
     }
@@ -175,10 +177,7 @@ public class HomeActivity extends BaseActivity implements BaseQuickAdapter.OnIte
                 intent = new Intent(this,MessageActivity.class);
                 startActivity(intent);
                 break;
-            case 5:
-                //版本号
-                ToastUtils.show("版本号 "+PhotoUtils.getAppVersionName(this));
-                break;
+
         }
 
     }

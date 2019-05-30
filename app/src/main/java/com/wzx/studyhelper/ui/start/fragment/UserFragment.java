@@ -1,9 +1,11 @@
 package com.wzx.studyhelper.ui.start.fragment;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.hjq.toast.ToastUtils;
 import com.hyphenate.EMCallBack;
@@ -20,9 +23,11 @@ import com.wzx.studyhelper.base.BaseFragment;
 import com.wzx.studyhelper.db.bean.UserIconDB;
 import com.wzx.studyhelper.db.impl.FriendsRequestDaoManager;
 import com.wzx.studyhelper.db.impl.UserIconDaoManager;
+import com.wzx.studyhelper.ui.start.act.HomeActivity;
 import com.wzx.studyhelper.ui.start.act.LoginActivity;
 import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.ImgSelectUtil;
+import com.wzx.studyhelper.utils.PhotoUtils;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
 import com.wzx.studyhelper.utils.glide.GlideDoMain;
 
@@ -43,11 +48,18 @@ public class UserFragment extends BaseFragment {
     TextView mTvNickname;
     @BindView(R.id.tv_phone)
     TextView mTvPhone;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.tv_version_code)
+    TextView mTvVersionCode;
+    @BindView(R.id.img_cover)
+    ImageView mImgCover;
 
 
     public UserFragment() {
 
     }
+
 
 
     @Override
@@ -62,17 +74,20 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected void initCircle() {
-        setCustomTitle(null,"我的",null);
+        ((HomeActivity) getActivity()).setSupportActionBar(mToolbar);
+        ((HomeActivity) getActivity()).getSupportActionBar().setTitle("学习助手");
+
         UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
         if (userIconDB!=null){
             GlideDoMain.getInstance().loadCircleImage(getContext(),userIconDB.getUserIcon(),mImgUserIcon);
         }
-        mTvNickname.setText("用户昵称:" + SharedPreferencesUtil.getInstance().getString(Constants.USER_NAME));
+        mTvNickname.setText("昵称:" + SharedPreferencesUtil.getInstance().getString(Constants.USER_NAME));
         mTvPhone.setText("手机号:"+SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
+        mTvVersionCode.setText("版本号:" + PhotoUtils.getAppVersionName(getContext()));
     }
 
 
-    @OnClick({R.id.btn_loginout, R.id.btn_change_icon,R.id.img_user_icon})
+    @OnClick({R.id.btn_loginout, R.id.fl_user_icon,R.id.img_user_icon,R.id.img_cover})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_loginout:
@@ -100,9 +115,12 @@ public class UserFragment extends BaseFragment {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 break;
-            case R.id.btn_change_icon:
+            case R.id.fl_user_icon:
             case R.id.img_user_icon:
                 ImgSelectUtil.selectImg(getActivity(), Constants.REQUEST_IMGSEL);
+                break;
+            case R.id.img_cover:
+                ImgSelectUtil.selectImg(getActivity(),Constants.REQUEST_COVER);
                 break;
         }
     }
@@ -119,5 +137,10 @@ public class UserFragment extends BaseFragment {
                 GlideDoMain.getInstance().loadCircleImage(getContext(),path,mImgUserIcon);
             }
         },500);
+    }
+
+    public void setCover(String path) {
+        GlideDoMain.getInstance().loadImage(getContext(),path,mImgCover);
+        ToastUtils.show("封面修改成功");
     }
 }

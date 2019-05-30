@@ -1,70 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.start.fragment.UserFragment"
-    android:orientation="vertical">
-    <include layout="@layout/common_title"/>
-    <RelativeLayout
+    tools:context=".ui.start.fragment.UserFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:collapsedTitleGravity="center"
+            app:contentScrim="#ffffff"
+            app:expandedTitleTextAppearance="@style/titlestyle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@android:color/transparent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+
+                <ImageView
+                    android:id="@+id/img_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y250"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user_cover" />
+                <FrameLayout
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_bg"
+                    android:id="@+id/fl_user_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/y40">
+                    <ImageView
+                        android:padding="2dp"
+                        android:id="@+id/img_user_icon"
+                        android:layout_width="@dimen/x80"
+                        android:layout_height="@dimen/x80"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/avatar_default" />
+                </FrameLayout>
+            </FrameLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                app:contentInsetLeft="0dp"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
-        <ImageView
-            android:id="@+id/img_user_icon"
-            android:layout_width="@dimen/x80"
-            android:layout_height="@dimen/x80"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/y20"
-            android:src="@drawable/avatar_default" />
-
-        <TextView
-            android:id="@+id/tv_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_user_icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/y10"
-            android:layout_marginBottom="@dimen/y10"
-            android:textColor="#000"
-            android:textSize="@dimen/x18"
-            android:textStyle="bold"
-            tools:text="笨蛋小灰猪" />
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_nickname"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/y10"
-            android:layout_marginBottom="@dimen/y10"
-            android:textColor="#000"
-            android:textSize="@dimen/x18"
-            android:textStyle="bold"
-            tools:text="18110591919" />
-        <Button
-            android:id="@+id/btn_change_icon"
-            android:layout_width="@dimen/x80"
-            android:layout_height="@dimen/y40"
-            android:layout_below="@id/tv_phone"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_bg"
-            android:text="更换头像"
-            android:textColor="#fff"
-            android:textSize="@dimen/x14" />
-
-        <Button
-            android:id="@+id/btn_loginout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/x14"
-            android:layout_marginRight="@dimen/x14"
-            android:layout_marginBottom="@dimen/y30"
-            android:background="@drawable/btn_red_bg"
-            android:text="退出登录"
-            android:textColor="#fff"
-            android:textSize="@dimen/x20" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_nick_icon"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginTop="@dimen/y30"
+                android:src="@drawable/user_nick_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/img_nick_icon"
+                android:layout_alignBottom="@id/img_nick_icon"
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#738de1"
+                android:textSize="@dimen/x18"
+                tools:text="笨蛋小灰猪" />
+
+            <ImageView
+                android:layout_marginTop="@dimen/y14"
+                android:layout_alignLeft="@id/img_nick_icon"
+                android:layout_below="@id/img_nick_icon"
+                android:id="@+id/img_phone_icon"
+                android:src="@drawable/phone_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_alignBottom="@id/img_phone_icon"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/img_phone_icon"
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#738de1"
+                android:textSize="@dimen/x18"
+                tools:text="18110591919" />
+
+            <ImageView
+                android:id="@+id/img_version_code"
+                android:layout_marginTop="@dimen/y14"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_below="@id/img_phone_icon"
+                android:src="@drawable/version_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                tools:text="版本号"
+                android:textColor="#738de1"
+                android:textSize="@dimen/x18"
+                android:layout_alignBottom="@id/img_version_code"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/img_version_code"
+                android:id="@+id/tv_version_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_below="@id/img_version_code"
+                android:id="@+id/btn_loginout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginTop="@dimen/y32"
+                android:layout_marginRight="@dimen/x14"
+                android:layout_marginBottom="@dimen/y30"
+                android:background="@drawable/btn_red_bg"
+                android:text="退出登录"
+                android:textColor="#fff"
+                android:textSize="@dimen/x20" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

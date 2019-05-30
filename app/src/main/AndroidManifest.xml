@@ -118,6 +118,11 @@
         <activity android:name=".ui.chat.act.MessageActivity" />
         <activity android:name=".ui.chat.act.AddFriendsActivity"></activity>
 
+
+        <activity android:name=".common.ui.Test2Activity">
+
+        </activity>
+
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
