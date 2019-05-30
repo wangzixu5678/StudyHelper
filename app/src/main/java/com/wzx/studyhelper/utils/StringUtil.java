@@ -6,7 +6,7 @@ package com.wzx.studyhelper.utils;
 
 public class StringUtil {
     public static boolean isEmpty(String str) {
-        if (str == null || "null".equals(str) || str.length() == 0) {
+        if (str == null ||"".equals(str)||"null".equals(str) || str.length() == 0) {
             return true;
         } else {
             return false;

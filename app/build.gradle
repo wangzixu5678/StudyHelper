@@ -92,7 +92,7 @@ dependencies {
 }
 
 greendao {
-    schemaVersion 1
+    schemaVersion 2
     targetGenDir 'src/main/java/'
     daoPackage 'com.wzx.studyhelper.db.auto'
 }

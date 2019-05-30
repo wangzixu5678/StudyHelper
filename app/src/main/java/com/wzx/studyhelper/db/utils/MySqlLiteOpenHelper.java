@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.wzx.studyhelper.db.auto.DaoMaster;
 import com.wzx.studyhelper.db.auto.FriendsRequestDBDao;
+import com.wzx.studyhelper.db.auto.UserIconDBDao;
+
 import org.greenrobot.greendao.database.Database;
 
 /**
@@ -20,5 +22,6 @@ public class MySqlLiteOpenHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         MigrationHelper.getInstance().migrate(db,FriendsRequestDBDao.class);
+        MigrationHelper.getInstance().migrate(db,UserIconDBDao.class);
     }
 }

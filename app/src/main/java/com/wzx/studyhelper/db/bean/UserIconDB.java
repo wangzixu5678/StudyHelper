@@ -17,6 +17,7 @@ public class UserIconDB {
     private String phone;
     private String nickname;
     private String userIcon;
+    private String imgCover;
     @ToMany(referencedJoinProperty = "masterId")
     private List<FriendsRequestDB> mFriendsRequestDBList;
     /** Used to resolve relations */
@@ -25,11 +26,12 @@ public class UserIconDB {
     /** Used for active entity operations. */
     @Generated(hash = 1935362748)
     private transient UserIconDBDao myDao;
-    @Generated(hash = 916688623)
-    public UserIconDB(String phone, String nickname, String userIcon) {
+    @Generated(hash = 1705259850)
+    public UserIconDB(String phone, String nickname, String userIcon, String imgCover) {
         this.phone = phone;
         this.nickname = nickname;
         this.userIcon = userIcon;
+        this.imgCover = imgCover;
     }
     @Generated(hash = 770992765)
     public UserIconDB() {
@@ -117,6 +119,12 @@ public class UserIconDB {
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getUserIconDBDao() : null;
+    }
+    public String getImgCover() {
+        return this.imgCover;
+    }
+    public void setImgCover(String imgCover) {
+        this.imgCover = imgCover;
     }
 
 

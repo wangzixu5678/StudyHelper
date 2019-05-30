@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
+
     tools:openDrawer="start">
 
     <LinearLayout
@@ -40,6 +41,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:clickable="true"
+        android:focusable="true"
         android:background="#fff"
         android:layout_gravity="start"
         android:id="@+id/ll_left"

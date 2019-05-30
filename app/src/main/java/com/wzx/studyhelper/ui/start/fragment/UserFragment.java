@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.hjq.toast.ToastUtils;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
@@ -29,6 +30,7 @@ import com.wzx.studyhelper.utils.Constants;
 import com.wzx.studyhelper.utils.ImgSelectUtil;
 import com.wzx.studyhelper.utils.PhotoUtils;
 import com.wzx.studyhelper.utils.SharedPreferencesUtil;
+import com.wzx.studyhelper.utils.StringUtil;
 import com.wzx.studyhelper.utils.glide.GlideDoMain;
 
 import butterknife.BindView;
@@ -80,6 +82,9 @@ public class UserFragment extends BaseFragment {
         UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
         if (userIconDB!=null){
             GlideDoMain.getInstance().loadCircleImage(getContext(),userIconDB.getUserIcon(),mImgUserIcon);
+            if (!StringUtil.isEmpty(userIconDB.getImgCover())){
+                GlideDoMain.getInstance().loadImage(getContext(),userIconDB.getImgCover(),mImgCover);
+            }
         }
         mTvNickname.setText("昵称:" + SharedPreferencesUtil.getInstance().getString(Constants.USER_NAME));
         mTvPhone.setText("手机号:"+SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
@@ -139,8 +144,17 @@ public class UserFragment extends BaseFragment {
         },500);
     }
 
-    public void setCover(String path) {
-        GlideDoMain.getInstance().loadImage(getContext(),path,mImgCover);
-        ToastUtils.show("封面修改成功");
+    public void setCover(final String path) {
+        UserIconDB userIconDB = UserIconDaoManager.getInstance().queryByUserId(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE));
+        userIconDB.setImgCover(path);
+        UserIconDaoManager.getInstance().insertOrReplace(userIconDB);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ToastUtils.show("封面修改成功");
+                GlideDoMain.getInstance().loadImage(getContext(),path,mImgCover);
+            }
+        },500);
+
     }
 }
