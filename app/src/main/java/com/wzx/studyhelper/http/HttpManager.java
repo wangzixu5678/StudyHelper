@@ -45,6 +45,7 @@ public class HttpManager extends RetrofitManager {
             }
         });
     }
+
     public void register(BaseImpl baseImp,String mobile,String password,String nickname,final ResponseCallback<String> responseCallback){
         JsonObject paramsMap = getParamsMap();
         paramsMap.addProperty("mobile",mobile);
