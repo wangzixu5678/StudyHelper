@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.baidu.** {*;}
+#解决百度地图混淆打包后不能使用   远程连接泄露
+-keep class vi.com.gdi.bgl.android.**{*;}

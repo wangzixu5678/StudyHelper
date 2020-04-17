@@ -1,5 +1,7 @@
 package com.wzx.studyhelper.ui.chat.utils;
 
+import android.util.Log;
+
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;

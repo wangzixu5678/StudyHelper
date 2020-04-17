@@ -2,8 +2,10 @@ package com.wzx.studyhelper.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.hjq.toast.ToastUtils;
 import com.hyphenate.chat.EMClient;
@@ -81,7 +83,7 @@ public class App extends Application {
         options.setAcceptInvitationAlways(false);
         options.setAutoLogin(true);
         EaseUI.getInstance().init(this,options);
-        EMClient.getInstance().setDebugMode(true);
+        EMClient.getInstance().setDebugMode(false);
         ChatHelper.getInstance().init();
     }
 

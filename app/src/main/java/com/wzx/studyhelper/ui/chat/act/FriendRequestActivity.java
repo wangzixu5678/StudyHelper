@@ -56,7 +56,9 @@ public class FriendRequestActivity extends BaseActivity implements BaseQuickAdap
             @Override
             public void run() {
                 mDatas.clear();
-                mDatas.addAll(UserIconDaoManager.getInstance().getMyFriendsRequest(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE)));
+                if (UserIconDaoManager.getInstance().getMyFriendsRequest(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE))!=null){
+                    mDatas.addAll(UserIconDaoManager.getInstance().getMyFriendsRequest(SharedPreferencesUtil.getInstance().getString(Constants.USER_PHONE)));
+                }
                 mWeakHandler.post(new Runnable() {
                     @Override
                     public void run() {

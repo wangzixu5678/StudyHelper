@@ -172,9 +172,16 @@ public class ContactsFragment extends BaseFragment implements BaseQuickAdapter.O
                                     public void run() {
                                         try {
                                             EMClient.getInstance().contactManager().deleteContact(mDatas.get(position).getUsername());
-                                            ToastUtils.show("删除好友失败");
-                                        } catch (HyphenateException e) {
                                             ToastUtils.show("删除好友成功");
+                                            mHandler.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                   mDatas.remove(position);
+                                                   mContactsAdapter.notifyDataSetChanged();
+                                                }
+                                            });
+                                        } catch (HyphenateException e) {
+                                            ToastUtils.show("删除好友失败");
                                         }
                                     }
                                 });

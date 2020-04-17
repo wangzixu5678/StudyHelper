@@ -48,7 +48,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.hyphenate.easeui.R;
 
-public class EaseBaiduMapActivity extends EaseBaseActivity {
+public class EaseBaiduMapActivity extends EaseBaseActivity  {
 
 	private final static String TAG = "map";
 	static MapView mMapView = null;
@@ -84,7 +84,7 @@ public class EaseBaiduMapActivity extends EaseBaseActivity {
 	
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		instance = this;
 		//initialize SDK with context, should call this before setContentView

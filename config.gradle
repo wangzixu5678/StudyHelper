@@ -10,8 +10,8 @@ ext {
             applicationId    : "com.wzx.studyhelper",
             minSdkVersion    : 16,
             targetSdkVersion : 27,
-            versionCode      : 3,
-            versionName      : "1.0.2"
+            versionCode      : 5,
+            versionName      : "1.0.4"
     ]
 
     support = [
@@ -100,7 +100,7 @@ ext {
     particleview = 'me.wangyuwei:ParticleView:1.0.2'
 
     //左滑删除
-    swipeMenuLayout = 'com.github.anzaizai:EasySwipeMenuLayout:1.1.2'
+    swipeMenuLayout = 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
 
     //数据库
     greendao = 'org.greenrobot:greendao:3.2.2'
